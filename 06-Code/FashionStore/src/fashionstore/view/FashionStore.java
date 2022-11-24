@@ -1,6 +1,6 @@
 package fashionstore.view;
 
-
+import com.google.gson.Gson;
 import java.util.Scanner;
 import fashionstore.model.Calendar;
 import fashionstore.model.Catalogue;
@@ -8,7 +8,12 @@ import fashionstore.model.ClothModel;
 import fashionstore.model.DeadlineDate;
 import fashionstore.model.FashionDesigner;
 import fashionstore.model.Measurement;
-import fashionstore.model.Order; 
+import fashionstore.model.Order;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,11 +27,18 @@ public class FashionStore {
     public static void main(String[] args) {
         System.out.println("=====\tGroup #5\t=====");
         System.out.println("===== Pythons =====");
-        int option , orderId;
-        
-        double neck , chest , shoulder , arm , hip , waist , leg;
+        int option;
+        int id;
+        String customerName = "";
+        long phoneNumber;
+        Measurement measurement;
+        int orderCounter = 0;
+
+        double neck, chest, shoulder, arm, hip, waist, leg;
 
         Scanner scan = new Scanner(System.in);
+        ArrayList<Order> orders = new ArrayList<Order>();
+
         do {
             System.out.println("===================================");
             System.out.println("\t\tMenu:");
@@ -45,13 +57,78 @@ public class FashionStore {
             try {
                 switch (option) {
                     case 1 -> {
-                        
+                        System.out.println("Enter the Order Id:");
+                        id = scan.nextInt();
+                        System.out.println("Enter the Customer Name:");
+                        customerName = scan.next();
+                        System.out.println("Enter the phone number:");
+                        phoneNumber = scan.nextLong();
+                        System.out.println("Measurements:");
+                        System.out.println("Enter the neck measurement:");
+                        neck = scan.nextDouble();
+                        System.out.println("Enter the chest measurement:");
+                        chest = scan.nextDouble();
+                        System.out.println("Enter the shoulder measurement:");
+                        shoulder = scan.nextDouble();
+                        System.out.println("Enter the arm measurement:");
+                        arm = scan.nextDouble();
+                        System.out.println("Enter the hip measurement:");
+                        hip = scan.nextDouble();
+                        System.out.println("Enter the waist measurement:");
+                        waist = scan.nextDouble();
+                        System.out.println("Enter the leg measurement:");
+                        leg = scan.nextDouble();
+
+                        measurement = new Measurement(neck, chest, shoulder, arm, hip, waist, leg);
+                        orders.add(new Order(id, customerName, phoneNumber, measurement));
+
+                        orderCounter++;
+                    }
+                    case 2 -> {
+                        if (!orders.isEmpty()) {
+                            System.out.println("================================");
+                            System.out.println("Id\tCustomer Name\tPhone Number\tNeck\tChest\tShoulder\tArm\tHip\tWaist\tLeg");
+                            for (int i = 0; i < orders.size(); i++) {
+                                printOrder(orders, i);
+                            }
+                            System.out.println("================================");
+                        } else {
+                            System.out.println("There are no orders");
+                        }
+                    }
+                    case 3 -> {
+                        String json = new Gson().toJson(orders);
+                        File orderRecord = new File("orderRecord.json");
+                        try {
+                            PrintWriter writer = new PrintWriter(new FileWriter(orderRecord, true));
+                            writer.print(json);
+                            writer.close();
+                        } catch (IOException ex) {
+                            Logger.getLogger(FashionStore.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
                     }
                 }
+            } catch (InputMismatchException e) {
+                System.out.println("Data type entered wasn't what was expected");
+                scan.next();
             }
 
         } while (option < 4);
 
+    }
+
+    private static void printOrder(ArrayList<Order> orders, int position) {
+        System.out.print(orders.get(position).getId() + "\t");
+        System.out.print(orders.get(position).getCustomerName() + "\t");
+        System.out.print(orders.get(position).getPhoneNumber() + "\t");
+        System.out.print(orders.get(position).getMeasurement().getNeckMeasurement() + "\t");
+        System.out.print(orders.get(position).getMeasurement().getChestMeasurement() + "\t");
+        System.out.print(orders.get(position).getMeasurement().getShoulderMeasurement() + "\t");
+        System.out.print(orders.get(position).getMeasurement().getArmMeasurement() + "\t");
+        System.out.print(orders.get(position).getMeasurement().getHipMeasurement() + "\t");
+        System.out.print(orders.get(position).getMeasurement().getWaistMeasurement() + "\t");
+        System.out.print(orders.get(position).getMeasurement().getLegMeasurement() + "\n");
     }
 
 }
