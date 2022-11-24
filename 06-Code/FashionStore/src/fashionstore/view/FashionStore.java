@@ -1,8 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package fashionstore.view;
+
+import fashionstore.model.Calendar;
+import fashionstore.model.Catalogue;
+import fashionstore.model.ClothModel;
+import fashionstore.model.DeadlineDate;
+import fashionstore.model.FashionDesigner;
+import fashionstore.model.Measurement;
+import fashionstore.model.Order; 
 
 /**
  *
