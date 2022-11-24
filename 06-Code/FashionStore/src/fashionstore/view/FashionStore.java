@@ -1,6 +1,14 @@
 package fashionstore.view;
 
+
 import java.util.Scanner;
+import fashionstore.model.Calendar;
+import fashionstore.model.Catalogue;
+import fashionstore.model.ClothModel;
+import fashionstore.model.DeadlineDate;
+import fashionstore.model.FashionDesigner;
+import fashionstore.model.Measurement;
+import fashionstore.model.Order; 
 
 /**
  *
