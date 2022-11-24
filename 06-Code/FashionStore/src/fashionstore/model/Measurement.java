@@ -2,7 +2,7 @@ package fashionstore.model;
 
 /**
  *
- * @author Erick Lasluisa, Pythons, DCCO-ESPE
+ * @author Pythons, DCCO-ESPE
  */
 public class Measurement {
 

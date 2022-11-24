@@ -1,13 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fashionstore.model;
+
+import java.util.Scanner;
 
 /**
  *
- * @author Miguel Gutierrez, Pythons, DCCO-ESPE
+ * @author Jonathan Jaguaco, Pythons, DCCO-ESPE
  */
 public class FashionDesigner {
+
+	public static void main(String [] args){
+        
+        Scanner sc = new Scanner(System.in);
+             
+        System.out.println("--FASHION DESIGNER--"); 
+        System.out.println("Create the order");
+        
+
+
+        }  
     
 }

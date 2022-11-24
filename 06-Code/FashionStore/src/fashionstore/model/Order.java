@@ -9,7 +9,7 @@ public class Order {
     private int id;
     private String customerName;
     private long phoneNumber;
-    private String[] specificRequirements;
+    //private String[] specificRequirements;
     private Measurement measurement;
     
     
@@ -17,9 +17,17 @@ public class Order {
         id=0;
         customerName="";
         phoneNumber=0;
-        specificRequirements=new String[10];
+        //specificRequirements=new String[10];
         measurement= new Measurement();
     }
+
+    public Order(int id, String customerName, long phoneNumber, Measurement measurement) {
+        this.id = id;
+        this.customerName = customerName;
+        this.phoneNumber = phoneNumber;
+        this.measurement = measurement;
+    }
+    
 
     /**
      * @return the id
@@ -65,17 +73,17 @@ public class Order {
 
     /**
      * @return the specificRequirements
-     */
+     
     public String[] getSpecificRequirements() {
         return specificRequirements;
-    }
+    }*/
 
     /**
      * @param specificRequirements the specificRequirements to set
-     */
+     
     public void setSpecificRequirements(String[] specificRequirements) {
         this.specificRequirements = specificRequirements;
-    }
+    }*/
 
     /**
      * @return the measurement
