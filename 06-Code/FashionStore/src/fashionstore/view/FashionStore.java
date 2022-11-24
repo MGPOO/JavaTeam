@@ -1,5 +1,6 @@
 package fashionstore.view;
 
+//Import libraries and classes
 import com.google.gson.Gson;
 import java.util.Scanner;
 import fashionstore.model.Calendar;
@@ -27,6 +28,7 @@ public class FashionStore {
     public static void main(String[] args) {
         System.out.println("=====\tGroup #5\t=====");
         System.out.println("===== Pythons =====");
+        //Variable Declaration
         int option;
         int id;
         String customerName = "";
@@ -40,6 +42,7 @@ public class FashionStore {
         ArrayList<Order> orders = new ArrayList<Order>();
 
         do {
+            //Menu Creation
             System.out.println("===================================");
             System.out.println("\t\tMenu:");
             System.out.println("1. Create a new order");
@@ -49,12 +52,13 @@ public class FashionStore {
 
             System.out.println("Enter an option: ");
             option = scan.nextInt();
+            //Menu Validation
             while (option > 4) {
                 System.out.println("Option invalid, Enter an option: ");
                 option = scan.nextInt();
             }
 
-            try {
+            try { //exceptions
                 switch (option) {
                     case 1 -> {
                         System.out.println("Enter the Order Id:");
@@ -78,14 +82,16 @@ public class FashionStore {
                         waist = scan.nextDouble();
                         System.out.println("Enter the leg measurement:");
                         leg = scan.nextDouble();
-
+                        
+                        //Use of constructors
                         measurement = new Measurement(neck, chest, shoulder, arm, hip, waist, leg);
                         orders.add(new Order(id, customerName, phoneNumber, measurement));
 
                         orderCounter++;
                     }
                     case 2 -> {
-                        if (!orders.isEmpty()) {
+                        //print section
+                        if (!orders.isEmpty()) { 
                             System.out.println("================================");
                             System.out.println("Id\tCustomer Name\tPhone Number\tNeck\tChest\tShoulder\tArm\tHip\tWaist\tLeg");
                             for (int i = 0; i < orders.size(); i++) {
@@ -97,13 +103,15 @@ public class FashionStore {
                         }
                     }
                     case 3 -> {
+                        //Use of Gson library
                         String json = new Gson().toJson(orders);
+                        //file creation
                         File orderRecord = new File("orderRecord.json");
                         try {
                             PrintWriter writer = new PrintWriter(new FileWriter(orderRecord, true));
                             writer.print(json);
                             writer.close();
-                        } catch (IOException ex) {
+                        } catch (IOException ex) { //Exception
                             Logger.getLogger(FashionStore.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
@@ -119,15 +127,16 @@ public class FashionStore {
     }
 
     private static void printOrder(ArrayList<Order> orders, int position) {
-        System.out.print(orders.get(position).getId() + "\t");
-        System.out.print(orders.get(position).getCustomerName() + "\t");
-        System.out.print(orders.get(position).getPhoneNumber() + "\t");
-        System.out.print(orders.get(position).getMeasurement().getNeckMeasurement() + "\t");
-        System.out.print(orders.get(position).getMeasurement().getChestMeasurement() + "\t");
-        System.out.print(orders.get(position).getMeasurement().getShoulderMeasurement() + "\t");
-        System.out.print(orders.get(position).getMeasurement().getArmMeasurement() + "\t");
-        System.out.print(orders.get(position).getMeasurement().getHipMeasurement() + "\t");
-        System.out.print(orders.get(position).getMeasurement().getWaistMeasurement() + "\t");
+        //Print orders
+        System.out.print(orders.get(position).getId() + "\t\t");
+        System.out.print(orders.get(position).getCustomerName() + "\t\t");
+        System.out.print(orders.get(position).getPhoneNumber() + "\t\t");
+        System.out.print(orders.get(position).getMeasurement().getNeckMeasurement() + "\t\t");
+        System.out.print(orders.get(position).getMeasurement().getChestMeasurement() + "\t\t");
+        System.out.print(orders.get(position).getMeasurement().getShoulderMeasurement() + "\t\t");
+        System.out.print(orders.get(position).getMeasurement().getArmMeasurement() + "\t\t");
+        System.out.print(orders.get(position).getMeasurement().getHipMeasurement() + "\t\t");
+        System.out.print(orders.get(position).getMeasurement().getWaistMeasurement() + "\t\t");
         System.out.print(orders.get(position).getMeasurement().getLegMeasurement() + "\n");
     }
 
