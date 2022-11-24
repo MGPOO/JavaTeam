@@ -6,7 +6,7 @@ package fashionstore.model;
 
 /**
  *
- * @author Miguel Gutierrez, Pythons, DCCO-ESPE
+ * @author Pythons, DCCO-ESPE
  */
 public class Order {
     
