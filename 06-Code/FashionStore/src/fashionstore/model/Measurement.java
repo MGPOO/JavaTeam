@@ -16,7 +16,7 @@ public class Measurement {
 
     @Override
     public String toString() {
-        return "Measurement{" + "neckMeasurement=" + getNeckMeasurement() + ", chestMeasurement=" + getChestMeasurement() + ", shoulderMeasurement=" + getShoulderMeasurement() + ", armMeasurement=" + getArmMeasurement() + ", hipMeasurement=" + getHipMeasurement() + ", waistMeasurement=" + getWaistMeasurement() + ", legMeasurement=" + getLegMeasurement() + '}';
+        return "Measurement:\n" + "Neck Measurement = \t" + getNeckMeasurement() + "\nChest Measurement = \t" + getChestMeasurement() + "\nShoulder Measurement = \t" + getShoulderMeasurement() + "\nArm Measurement = \t" + getArmMeasurement() + "\nHip Measurement = \t" + getHipMeasurement() + "\nWaistMeasurement = \t" + getWaistMeasurement() + "\nLeg Measurement = \t" + getLegMeasurement();
     }
 
     public Measurement(double neckMeasurement, double chestMeasurement, double shoulderMeasurement, double armMeasurement, double hipMeasurement, double waistMeasurement, double legMeasurement) {

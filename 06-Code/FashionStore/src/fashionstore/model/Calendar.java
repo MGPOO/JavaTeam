@@ -6,7 +6,7 @@ package fashionstore.model;
  * @author Pythons, DCCO-ESPE
  */
 public class Calendar {
-    private DeadlineDate deadlineDate;
+    private String deadlineDate;
 
     @Override
     public String toString() {
@@ -16,23 +16,23 @@ public class Calendar {
     /**
      * @return the deadlineDate
      */
-    public DeadlineDate getDeadlineDate() {
+    public String getDeadlineDate() {
         return deadlineDate;
     }
 
     /**
      * @param deadlineDate the deadlineDate to set
      */
-    public void setDeadlineDate(DeadlineDate deadlineDate) {
+    public void setDeadlineDate(String deadlineDate) {
         this.deadlineDate = deadlineDate;
     }
 
-    public Calendar(DeadlineDate deadlineDate) {
+    public Calendar(String deadlineDate) {
         this.deadlineDate = deadlineDate;
     }
     
     public Calendar() {
-        this.deadlineDate = new DeadlineDate();
+        this.deadlineDate = new String();
     }
         
 }

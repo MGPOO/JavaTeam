@@ -9,15 +9,17 @@ public class Order {
     private int id;
     private String customerName;
     private long phoneNumber;
-    //private String[] specificRequirements;
     private Measurement measurement;
-    
+
+    @Override
+    public String toString() {
+        return "Id =\t" + id + "\nCustomer Name =\t" + customerName + "\nPhone Number =\t" + phoneNumber + "\n" + measurement;
+    }
     
     public Order (){
         id=0;
         customerName="";
         phoneNumber=0;
-        //specificRequirements=new String[10];
         measurement= new Measurement();
     }
 
@@ -70,20 +72,6 @@ public class Order {
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    /**
-     * @return the specificRequirements
-     
-    public String[] getSpecificRequirements() {
-        return specificRequirements;
-    }*/
-
-    /**
-     * @param specificRequirements the specificRequirements to set
-     
-    public void setSpecificRequirements(String[] specificRequirements) {
-        this.specificRequirements = specificRequirements;
-    }*/
 
     /**
      * @return the measurement
