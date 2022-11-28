@@ -97,7 +97,7 @@ public class FashionStore {
                             System.out.println("=================================================================================================================");
                             System.out.println("Id\tCustomer Name\tPhone Number\tNeck\tChest\tShoulder\tArm\tHip\tWaist\tLeg");
                             for (int i = 0; i < orders.size(); i++) {
-                                printOrder(orders, i);
+                                printOrders(orders, i);
                             }
                             System.out.println("=================================================================================================================");
                         } else {
@@ -256,7 +256,7 @@ public class FashionStore {
 
     }
 
-    private static void printOrder(ArrayList<Order> orders, int position) {
+    private static void printOrders(ArrayList<Order> orders, int position) {
         //Print orders
         System.out.print(orders.get(position).getId() + "\t");
         System.out.print(orders.get(position).getCustomerName() + "\t\t");
