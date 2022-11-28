@@ -25,4 +25,6 @@ public class Catalogue {
     public void setClothModel(ClothModel clothModel) {
         this.clothModel = clothModel;
     }
-    }
+
+ }
+
