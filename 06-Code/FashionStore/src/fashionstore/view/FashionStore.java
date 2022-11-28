@@ -3,11 +3,6 @@ package fashionstore.view;
 //Import libraries and classes
 import com.google.gson.Gson;
 import java.util.Scanner;
-import fashionstore.model.Calendar;
-import fashionstore.model.Catalogue;
-import fashionstore.model.ClothModel;
-import fashionstore.model.DeadlineDate;
-import fashionstore.model.FashionDesigner;
 import fashionstore.model.Measurement;
 import fashionstore.model.Order;
 import java.io.*;

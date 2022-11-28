@@ -18,3 +18,6 @@
 *.zip
 *.tar.gz
 *.rar
+/06-Code/FashionStore/dist/
+/06-Code/FashionStore/build/
+/06-Code/FashionStore/nbproject/private/
