@@ -5,15 +5,18 @@ package fashionstore.model;
  * @author Pythons, DCCO-ESPE
  */
 public class Order {
+
+    
     
     private int id;
     private String customerName;
     private long phoneNumber;
     private Measurement measurement;
+    private Calendar calendar;
 
     @Override
     public String toString() {
-        return "Id =\t" + id + "\nCustomer Name =\t" + customerName + "\nPhone Number =\t" + phoneNumber + "\n" + measurement;
+        return "Id =\t" + id + "\nCustomer Name =\t" + customerName + "\nPhone Number =\t" + phoneNumber + "\n" + measurement + "\n" + calendar;
     }
     
     public Order (){
@@ -21,6 +24,7 @@ public class Order {
         customerName="";
         phoneNumber=0;
         measurement= new Measurement();
+        calendar= new Calendar();
     }
 
     public Order(int id, String customerName, long phoneNumber, Measurement measurement) {
@@ -28,6 +32,7 @@ public class Order {
         this.customerName = customerName;
         this.phoneNumber = phoneNumber;
         this.measurement = measurement;
+        this.calendar = calendar;
     }
     
 
@@ -85,6 +90,19 @@ public class Order {
      */
     public void setMeasurement(Measurement measurement) {
         this.measurement = measurement;
+    }
+    /**
+     * @return the calendar
+     */
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    /**
+     * @param calendar the calendar to set
+     */
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
     }
     
 }
