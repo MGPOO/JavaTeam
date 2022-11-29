@@ -4,6 +4,7 @@ package fashionstore.view;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import fashionstore.model.Calendar;
 import java.util.Scanner;
 import fashionstore.model.Measurement;
 import fashionstore.model.Order;
@@ -97,7 +98,7 @@ public class FashionStore {
                             System.out.println("=================================================================================================================");
                             System.out.println("Id\tCustomer Name\tPhone Number\tNeck\tChest\tShoulder\tArm\tHip\tWaist\tLeg");
                             for (int i = 0; i < orders.size(); i++) {
-                                printOrder(orders, i);
+                                printOrders(orders, i);
                             }
                             System.out.println("=================================================================================================================");
                         } else {
@@ -255,8 +256,22 @@ public class FashionStore {
         } while (option < 9);
 
     }
-
-    private static void printOrder(ArrayList<Order> orders, int position) {
+   
+    private static void addCalendar(Calendar calendar){
+        Scanner scan = new Scanner(System.in);
+        int day, month, year;
+        System.out.println("===\tDeadline Date\t===");
+        System.out.println("Enter day: \t");
+        day = scan.nextInt();
+        calendar.setDay(day);
+        System.out.println("Enter month: \t");
+        month = scan.nextInt();
+        calendar.setMonth(month);
+        System.out.println("Enter year: \t");
+        year = scan.nextInt();
+        calendar.setYear(year);
+    }
+    private static void printOrders(ArrayList<Order> orders, int position) {
         //Print orders
         System.out.print(orders.get(position).getId() + "\t");
         System.out.print(orders.get(position).getCustomerName() + "\t\t");
@@ -292,6 +307,7 @@ public class FashionStore {
         String customerName;
         long phoneNumber;
         Measurement measurement = orders.get(ordersPosition).getMeasurement();
+        Calendar calendar = orders.get(ordersPosition).getCalendar();
 
         do {
             System.out.println("===================================");
@@ -299,8 +315,9 @@ public class FashionStore {
             System.out.println("1. Edit customer's name");
             System.out.println("2. Edit Phone Number");
             System.out.println("3. Edit measurement");
-            System.out.println("4. Review changes");
-            System.out.println("5. Exit");
+            System.out.println("4. Edit deadline date");
+            System.out.println("5. Review changes");
+            System.out.println("6. Exit");
             System.out.println("Enter an option:");
             option = scan.nextInt();
             while (option > 9) {
@@ -327,10 +344,16 @@ public class FashionStore {
                     orders.set(ordersPosition, orderEdited);
                 }
                 case 4 -> {
+                    addCalendar(calendar);
+                    orderEdited.setCalendar(calendar);
+                    orders.set(ordersPosition, orderEdited);
+                 
+                }
+                case 5 -> {
                     System.out.println(orders.get(ordersPosition));
                 }
             }
-        } while (option < 5);
+        } while (option < 6);
     }
     
     private static void fixId(ArrayList<Order> orders){
