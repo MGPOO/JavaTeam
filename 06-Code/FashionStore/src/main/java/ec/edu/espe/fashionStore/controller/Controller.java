@@ -102,4 +102,21 @@ public class Controller {
         }
     }
 
+    public static void deleteMongo(MongoDatabase database, Order order) {
+
+        MongoCollection<Document> collection = database.getCollection("Orders");
+        Bson query = Filters.eq("id", order.getId());
+        Bson filter = Filters.and(Filters.all("id", order.getId()));
+
+        if (collection.find(filter).first() != null) {
+
+            collection.deleteOne(query);
+
+        } else {
+            System.out.println("Order not found");
+        }
+
+    }
+
 }
+
