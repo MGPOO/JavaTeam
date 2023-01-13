@@ -84,6 +84,11 @@ public class FrmCreateOrder extends javax.swing.JFrame {
 
         jLabel3.setText("Order:");
 
+        txtOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrderActionPerformed(evt);
+            }
+        });
         txtOrder.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtOrderKeyTyped(evt);
@@ -464,6 +469,10 @@ public class FrmCreateOrder extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnUpdateOrderActionPerformed
+
+    private void txtOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrderActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
