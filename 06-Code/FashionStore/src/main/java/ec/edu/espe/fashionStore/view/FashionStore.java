@@ -157,7 +157,8 @@ public class FashionStore {
                 json = line;
                 TypeToken<ArrayList<Order>> type = new TypeToken<ArrayList<Order>>() {
                 };
-                orders = gson.fromJson(json, type);
+                //solucionar orders
+                //orders = gson.fromJson(json, type);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FashionStore.class.getName()).log(Level.SEVERE, null, ex);
@@ -182,8 +183,8 @@ public class FashionStore {
 
         measurement = new Measurement();
         addMeasurement(measurement);
-
-        orders.add(new Order(id, customerName, phoneNumber, measurement));
+        // colocar el costructor
+        //orders.add(new Order(id, customerName, phoneNumber, measurement));
     }
 
     private static void addMeasurement(Measurement measurement) {
@@ -307,7 +308,8 @@ public class FashionStore {
         String customerName;
         long phoneNumber;
         Measurement measurement = orders.get(ordersPosition).getMeasurement();
-        Calendar calendar = orders.get(ordersPosition).getCalendar();
+        //crear el metodo
+        //Calendar calendar = orders.get(ordersPosition).getCalendar();
 
         do {
             System.out.println("===================================");
@@ -344,8 +346,8 @@ public class FashionStore {
                     orders.set(ordersPosition, orderEdited);
                 }
                 case 4 -> {
-                    addCalendar(calendar);
-                    orderEdited.setCalendar(calendar);
+                    //addCalendar(calendar);
+                    //orderEdited.setCalendar(calendar);
                     orders.set(ordersPosition, orderEdited);
                  
                 }

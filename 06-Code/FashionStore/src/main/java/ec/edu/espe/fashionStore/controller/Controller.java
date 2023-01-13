@@ -2,6 +2,9 @@ package ec.edu.espe.fashionStore.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -9,6 +12,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import ec.edu.espe.fashionstore.model.Measurement;
 import ec.edu.espe.fashionstore.model.Order;
+import static java.util.Locale.filter;
 import java.util.Scanner;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -38,7 +42,10 @@ public class Controller {
                         .append("armMeasurement", order.getMeasurement().getArmMeasurement())
                         .append("hipMeasurement", order.getMeasurement().getHipMeasurement())
                         .append("waistMeasurement", order.getMeasurement().getWaistMeasurement())
-                        .append("legMeasurement", order.getMeasurement().getLegMeasurement()));
+                        .append("legMeasurement", order.getMeasurement().getLegMeasurement()))
+                .append("day", order.getDay())
+                .append("month", order.getMonth())
+                .append("year", order.getYear());
 
         collection.insertOne(inspection);
 
@@ -94,7 +101,10 @@ public class Controller {
                     Updates.set("measurement.armMeasurement", order.getMeasurement().getArmMeasurement()),
                     Updates.set("measurement.hipMeasurement", order.getMeasurement().getHipMeasurement()),
                     Updates.set("measurement.waistMeasurement", order.getMeasurement().getWaistMeasurement()),
-                    Updates.set("measurement.legMeasurement", order.getMeasurement().getNeckMeasurement()));
+                    Updates.set("measurement.legMeasurement", order.getMeasurement().getNeckMeasurement()),
+                    Updates.set("day", order.getDay()),
+                    Updates.set("month", order.getMonth()),
+                    Updates.set("year", order.getYear()));
             collection.updateOne(query, updates);
 
         } else {
@@ -102,4 +112,19 @@ public class Controller {
         }
     }
 
+    public static void deleteMongo(MongoDatabase database, Order order) {
+
+        MongoCollection<Document> collection = database.getCollection("Orders");
+        Bson query = Filters.eq("id", order.getId());
+        Bson filter = Filters.and(Filters.all("id", order.getId()));
+
+        if (collection.find(filter).first() != null) {
+
+            collection.deleteOne(query);
+
+        } else {
+            System.out.println("Order not found");
+        }
+
+    }
 }

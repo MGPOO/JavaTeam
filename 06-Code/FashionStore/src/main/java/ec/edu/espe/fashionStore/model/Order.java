@@ -11,30 +11,30 @@ public class Order {
     private int id;
     private String customerName;
     private long phoneNumber;
+    private String day;
+    private String month;
+    private String year;
     private Measurement measurement;
-    private Calendar calendar;
 
-    @Override
-    public String toString() {
-        return "Id =\t" + id + "\nCustomer Name =\t" + customerName + "\nPhone Number =\t" + phoneNumber + "\n" + measurement + "\n" + calendar;
+    public Order() {
+        
     }
+
     
-    public Order (){
-        id=0;
-        customerName="";
-        phoneNumber=0;
-        measurement= new Measurement();
-        calendar= new Calendar();
-    }
-
-    public Order(int id, String customerName, long phoneNumber, Measurement measurement) {
+    public Order(int id, String customerName, long phoneNumber, String day, String month, String year, Measurement measurement) {
         this.id = id;
         this.customerName = customerName;
         this.phoneNumber = phoneNumber;
+        this.day = day;
+        this.month = month;
+        this.year = year;
         this.measurement = measurement;
-        this.calendar = calendar;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + getId() + ", customerName=" + getCustomerName() + ", phoneNumber=" + getPhoneNumber() + ", day=" + getDay() + ", month=" + getMonth() + ", year=" + getYear() + ", measurement=" + getMeasurement() + '}';
+    }
 
     /**
      * @return the id
@@ -79,6 +79,48 @@ public class Order {
     }
 
     /**
+     * @return the day
+     */
+    public String getDay() {
+        return day;
+    }
+
+    /**
+     * @param day the day to set
+     */
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    /**
+     * @return the month
+     */
+    public String getMonth() {
+        return month;
+    }
+
+    /**
+     * @param month the month to set
+     */
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    /**
+     * @return the year
+     */
+    public String getYear() {
+        return year;
+    }
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    /**
      * @return the measurement
      */
     public Measurement getMeasurement() {
@@ -90,19 +132,6 @@ public class Order {
      */
     public void setMeasurement(Measurement measurement) {
         this.measurement = measurement;
-    }
-    /**
-     * @return the calendar
-     */
-    public Calendar getCalendar() {
-        return calendar;
-    }
-
-    /**
-     * @param calendar the calendar to set
-     */
-    public void setCalendar(Calendar calendar) {
-        this.calendar = calendar;
     }
     
 }
