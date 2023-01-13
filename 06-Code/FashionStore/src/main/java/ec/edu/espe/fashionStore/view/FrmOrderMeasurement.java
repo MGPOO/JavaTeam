@@ -11,8 +11,10 @@ import com.mongodb.client.model.Filters;
 import ec.edu.espe.fashionstore.model.Measurement;
 import ec.edu.espe.fashionstore.model.Order;
 import ec.edu.espe.fashionStore.controller.Controller;
+import java.awt.event.KeyEvent;
 import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
+import jdk.jfr.Event;
 import org.bson.BsonDocument;
 import org.bson.BsonInt64;
 import org.bson.Document;
@@ -25,7 +27,7 @@ import org.bson.conversions.Bson;
 public class FrmOrderMeasurement extends javax.swing.JFrame {
 
     private static final Measurement measurement = new Measurement();
-    //private static final Order order = new Order();
+    private static Order order = new Order();
 
     /**
      * Creates new form FrmMeasurement
@@ -60,20 +62,23 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         txtHip = new javax.swing.JTextField();
         txtWaist = new javax.swing.JTextField();
         txtLeg = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        btnSave = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnFind = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtOrderID = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtOrderType = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        btnSave = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnExitMeasurement = new javax.swing.JButton();
 
         jLabel10.setText("jLabel10");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Order Measurements");
 
         jLabel2.setText("Neck");
@@ -90,6 +95,174 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
 
         jLabel8.setText("Leg");
 
+        txtNeck.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNeckKeyTyped(evt);
+            }
+        });
+
+        txtChest.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtChestKeyTyped(evt);
+            }
+        });
+
+        txtShoulder.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtShoulderKeyTyped(evt);
+            }
+        });
+
+        txtArm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtArmKeyTyped(evt);
+            }
+        });
+
+        txtHip.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHipKeyTyped(evt);
+            }
+        });
+
+        txtWaist.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtWaistKeyTyped(evt);
+            }
+        });
+
+        txtLeg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLegKeyTyped(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel11.setText("Upper Body");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel9.setText("Lower Body");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setText("Order ID:");
+
+        txtOrderID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtOrderID.setEnabled(false);
+        txtOrderID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrderIDActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Type of Order");
+
+        txtOrderType.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(40, 40, 40)
+                        .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(97, 97, 97)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtChest, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNeck, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(123, 123, 123)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtArm, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtShoulder, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(123, 123, 123)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtHip, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtWaist, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtLeg, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel9)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtOrderType))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel11)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(89, 89, 89)
+                                        .addComponent(jLabel1)))
+                                .addGap(0, 103, Short.MAX_VALUE)))
+                        .addGap(50, 50, 50))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtOrderID)
+                    .addComponent(jLabel13)
+                    .addComponent(txtOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtHip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtWaist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtLeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtNeck, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtChest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtShoulder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtArm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(193, 193, 193))
+        );
+
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        btnSave.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +270,7 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setEnabled(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -105,10 +279,11 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
             }
         });
 
-        btnFind.setText("Find Id");
-        btnFind.addActionListener(new java.awt.event.ActionListener() {
+        btnExitMeasurement.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnExitMeasurement.setText("Go Back");
+        btnExitMeasurement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFindActionPerformed(evt);
+                btnExitMeasurementActionPerformed(evt);
             }
         });
 
@@ -117,141 +292,38 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnFind)
-                    .addComponent(btnDelete)
-                    .addComponent(btnSave))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(btnExitMeasurement)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSave)
+                .addGap(120, 120, 120)
+                .addComponent(btnDelete)
+                .addGap(47, 47, 47))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(btnFind)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete)
-                .addGap(66, 66, 66))
-        );
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel11.setText("Upper Body");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel9.setText("Lower Body");
-
-        jLabel12.setText("Order ID:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLeg, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addContainerGap(62, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtHip, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWaist, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNeck, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtChest, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtArm, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtShoulder, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(78, 78, 78))))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNeck, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtChest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtShoulder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtArm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(4, 4, 4)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtHip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtWaist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtLeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExitMeasurement)
+                    .addComponent(btnSave)
+                    .addComponent(btnDelete))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 5, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -291,99 +363,145 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                 order.setMeasurement(measurement);
                 Controller.updateMongo(database, order);
 
+                JOptionPane.showMessageDialog(this, "Measurements saved succesfully");
+
             } catch (MongoException me) {
                 System.err.println("An error ocurred while attempting to connect: " + me);
+                JOptionPane.showMessageDialog(this, "An error ocurred while attempting to connect: " + me, "Database Conection", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+
+        //if(txtOrderID){}
+        int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this order?");
         int id = Integer.parseInt(txtOrderID.getText());
 
-        String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
+        if (option == 0) {
+            String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
 
-        try ( MongoClient mongoClient = MongoClients.create(uri)) {
-            MongoDatabase database = mongoClient.getDatabase("FashionStore");
-            Order order = Controller.readMongo(database, id);
+            try ( MongoClient mongoClient = MongoClients.create(uri)) {
+                MongoDatabase database = mongoClient.getDatabase("FashionStore");
+                Order order = Controller.readMongo(database, id);
 
-            try {
-                //Conection with database server
-                Bson command = new BsonDocument("ping", new BsonInt64(1));
-                org.bson.Document commandResult = database.runCommand(command);
-                System.out.println("Connected successfully to server.");
+                try {
+                    //Conection with database server
+                    Bson command = new BsonDocument("ping", new BsonInt64(1));
+                    org.bson.Document commandResult = database.runCommand(command);
+                    System.out.println("Connected successfully to server.");
 
-                float neck = 0.0F;
-                measurement.setNeckMeasurement(neck);
-                txtNeck.setText(String.valueOf(neck));
-                float chest = 0.0F;
-                measurement.setChestMeasurement(chest);
-                txtChest.setText(String.valueOf(chest));
-                float shoulder = 0.0F;
-                measurement.setShoulderMeasurement(shoulder);
-                txtShoulder.setText(String.valueOf(shoulder));
-                float arm = 0.0F;
-                measurement.setArmMeasurement(arm);
-                txtArm.setText(String.valueOf(arm));
-                float hip = 0.0F;
-                measurement.setHipMeasurement(hip);
-                txtHip.setText(String.valueOf(hip));
-                float waist = 0.0F;
-                measurement.setWaistMeasurement(waist);
-                txtWaist.setText(String.valueOf(waist));
-                float leg = 0.0F;
-                measurement.setLegMeasurement(leg);
-                txtLeg.setText(String.valueOf(leg));
+                    float neck = 0.0F;
+                    measurement.setNeckMeasurement(neck);
+                    txtNeck.setText(String.valueOf(neck));
+                    float chest = 0.0F;
+                    measurement.setChestMeasurement(chest);
+                    txtChest.setText(String.valueOf(chest));
+                    float shoulder = 0.0F;
+                    measurement.setShoulderMeasurement(shoulder);
+                    txtShoulder.setText(String.valueOf(shoulder));
+                    float arm = 0.0F;
+                    measurement.setArmMeasurement(arm);
+                    txtArm.setText(String.valueOf(arm));
+                    float hip = 0.0F;
+                    measurement.setHipMeasurement(hip);
+                    txtHip.setText(String.valueOf(hip));
+                    float waist = 0.0F;
+                    measurement.setWaistMeasurement(waist);
+                    txtWaist.setText(String.valueOf(waist));
+                    float leg = 0.0F;
+                    measurement.setLegMeasurement(leg);
+                    txtLeg.setText(String.valueOf(leg));
 
-                order.setMeasurement(measurement);
-                Controller.updateMongo(database, order);
+                    order.setMeasurement(measurement);
+                    Controller.updateMongo(database, order);
+                    JOptionPane.showMessageDialog(this, "Measurement Deleted successfully");
 
-            } catch (MongoException me) {
-                System.err.println("An error ocurred while attempting to connect: " + me);
+                } catch (MongoException me) {
+                    System.err.println("An error ocurred while attempting to connect: " + me);
+                    JOptionPane.showMessageDialog(this, "An error ocurred while attempting to connect: " + me, "Database Conection", JOptionPane.WARNING_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        int id = Integer.parseInt(txtOrderID.getText());
-
-        String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
-
-        try ( MongoClient mongoClient = MongoClients.create(uri)) {
-            MongoDatabase database = mongoClient.getDatabase("FashionStore");
-            Order order = Controller.readMongo(database, id);
-
-            try {
-                //Conection with database server
-                Bson command = new BsonDocument("ping", new BsonInt64(1));
-                org.bson.Document commandResult = database.runCommand(command);
-                System.out.println("Connected successfully to server.");
-
-                float neck = (float) order.getMeasurement().getNeckMeasurement();
-                txtNeck.setText(String.valueOf(neck));
-
-                float chest = (float) order.getMeasurement().getChestMeasurement();
-                txtChest.setText(String.valueOf(chest));
-
-                float shoulder = (float) order.getMeasurement().getShoulderMeasurement();
-                txtShoulder.setText(String.valueOf(shoulder));
-
-                float arm = (float) order.getMeasurement().getArmMeasurement();
-                txtArm.setText(String.valueOf(arm));
-
-                float hip = (float) order.getMeasurement().getHipMeasurement();
-                txtHip.setText(String.valueOf(hip));
-
-                float waist = (float) order.getMeasurement().getWaistMeasurement();
-                txtWaist.setText(String.valueOf(waist));
-
-                float leg = (float) order.getMeasurement().getLegMeasurement();
-                txtLeg.setText(String.valueOf(leg));
-
-            } catch (MongoException me) {
-                System.err.println("An error ocurred while attempting to connect: " + me);
-            }
+    private void txtNeckKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNeckKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+                && (character != KeyEvent.VK_BACK_SPACE)
+                && (character != '.' || txtNeck.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
         }
-    }//GEN-LAST:event_btnFindActionPerformed
+    }//GEN-LAST:event_txtNeckKeyTyped
+
+    private void txtChestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChestKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+                && (character != KeyEvent.VK_BACK_SPACE)
+                && (character != '.' || txtChest.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtChestKeyTyped
+
+    private void txtShoulderKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtShoulderKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+                && (character != KeyEvent.VK_BACK_SPACE)
+                && (character != '.' || txtShoulder.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtShoulderKeyTyped
+
+    private void txtArmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArmKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+                && (character != KeyEvent.VK_BACK_SPACE)
+                && (character != '.' || txtArm.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtArmKeyTyped
+
+    private void txtHipKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHipKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+                && (character != KeyEvent.VK_BACK_SPACE)
+                && (character != '.' || txtHip.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtHipKeyTyped
+
+    private void txtWaistKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWaistKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+                && (character != KeyEvent.VK_BACK_SPACE)
+                && (character != '.' || txtWaist.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtWaistKeyTyped
+
+    private void txtLegKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLegKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+                && (character != KeyEvent.VK_BACK_SPACE)
+                && (character != '.' || txtLeg.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtLegKeyTyped
+
+    private void btnExitMeasurementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitMeasurementActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnExitMeasurementActionPerformed
+
+    private void txtOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrderIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,13 +540,14 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnFind;
+    public javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnExitMeasurement;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -439,13 +558,14 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtArm;
-    private javax.swing.JTextField txtChest;
-    private javax.swing.JTextField txtHip;
-    private javax.swing.JTextField txtLeg;
-    private javax.swing.JTextField txtNeck;
-    private javax.swing.JTextField txtOrderID;
-    private javax.swing.JTextField txtShoulder;
-    private javax.swing.JTextField txtWaist;
+    public javax.swing.JTextField txtArm;
+    public javax.swing.JTextField txtChest;
+    public javax.swing.JTextField txtHip;
+    public javax.swing.JTextField txtLeg;
+    public javax.swing.JTextField txtNeck;
+    public javax.swing.JTextField txtOrderID;
+    public javax.swing.JTextField txtOrderType;
+    public javax.swing.JTextField txtShoulder;
+    public javax.swing.JTextField txtWaist;
     // End of variables declaration//GEN-END:variables
 }

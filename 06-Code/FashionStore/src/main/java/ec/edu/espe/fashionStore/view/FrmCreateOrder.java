@@ -137,6 +137,7 @@ public class FrmCreateOrder extends javax.swing.JFrame {
         });
 
         btnAdd.setText("Add Measurement");
+        btnAdd.setEnabled(false);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -324,21 +325,24 @@ public class FrmCreateOrder extends javax.swing.JFrame {
                 String day = cmbDay.getSelectedItem().toString();
                 String month = cmbMonth.getSelectedItem().toString();
                 String year = cmbYear.getSelectedItem().toString();
-                txtOrder.setText("");
-                txtName.setText("");
-                txtPhone.setText("");
-                cmbDay.setSelectedIndex(0);
-                cmbMonth.setSelectedIndex(0);
-                cmbYear.setSelectedIndex(0);
+                txtOrder.setEnabled(false);
+                txtName.setEnabled(false);
+                txtPhone.setEnabled(false);
+                cmbDay.setEnabled(false);
+                cmbMonth.setEnabled(false);
+                cmbYear.setEnabled(false);
                 model.addRow(Datos);
 
                 Order order = new Order(id, name, phoneNumber, day, month, year, measurement);
                 Controller.insertDocumentMongo(database, order);
+                JOptionPane.showMessageDialog(this, "Order saved succesfully");
             } catch (MongoException me) {
                 System.err.println("An error ocurred while attempting to connect: " + me);
             }
         }
 
+        btnSave.setEnabled(false);
+        btnAdd.setEnabled(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
@@ -376,8 +380,43 @@ public class FrmCreateOrder extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         FrmOrderMeasurement measurement = new FrmOrderMeasurement();
-        measurement.setVisible(true);
-        this.dispose();
+        if (!btnUpdateOrder.isEnabled()) {
+            measurement.setVisible(true);
+            measurement.txtOrderID.setText(txtOrder.getText());
+            measurement.txtOrderType.setText("New");
+        } else {
+
+            int id = Integer.parseInt(txtOrder.getText());
+            String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
+
+            try ( MongoClient mongoClient = MongoClients.create(uri)) {
+                MongoDatabase database = mongoClient.getDatabase("FashionStore");
+
+                try {
+                    //Conection with database server
+                    Bson command = new BsonDocument("ping", new BsonInt64(1));
+                    org.bson.Document commandResult = database.runCommand(command);
+                    System.out.println("Connected successfully to server.");
+
+                    Order order = Controller.readMongo(database, id);
+                    measurement.txtNeck.setText(String.valueOf(order.getMeasurement().getNeckMeasurement()));
+                    measurement.txtChest.setText(String.valueOf(order.getMeasurement().getChestMeasurement()));
+                    measurement.txtArm.setText(String.valueOf(order.getMeasurement().getArmMeasurement()));
+                    measurement.txtShoulder.setText(String.valueOf(order.getMeasurement().getShoulderMeasurement()));
+                    measurement.txtHip.setText(String.valueOf(order.getMeasurement().getHipMeasurement()));
+                    measurement.txtWaist.setText(String.valueOf(order.getMeasurement().getWaistMeasurement()));
+                    measurement.txtLeg.setText(String.valueOf(order.getMeasurement().getLegMeasurement()));
+
+                } catch (MongoException me) {
+                    System.err.println("An error ocurred while attempting to connect: " + me);
+                }
+            }
+            measurement.setVisible(true);
+            measurement.txtOrderID.setText(txtOrder.getText());
+            measurement.txtOrderType.setText("Update");
+            measurement.btnDelete.setEnabled(true);
+        }
+        //this.dispose();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateOrderActionPerformed
@@ -391,6 +430,7 @@ public class FrmCreateOrder extends javax.swing.JFrame {
                 Bson command = new BsonDocument("ping", new BsonInt64(1));
                 org.bson.Document commandResult = database.runCommand(command);
                 System.out.println("Connected successfully to server.");
+                
 
                 //comvertir los parametros de acuerdo al constructor
                 String[] Datos = new String[6];
@@ -400,8 +440,9 @@ public class FrmCreateOrder extends javax.swing.JFrame {
                 Datos[3] = cmbDay.getSelectedItem().toString();
                 Datos[4] = cmbMonth.getSelectedItem().toString();
                 Datos[5] = cmbYear.getSelectedItem().toString();
-                Measurement measurement = new Measurement();
                 int id = Integer.parseInt(txtOrder.getText());
+                Order order = Controller.readMongo(database, id);
+                Measurement measurement = order.getMeasurement();
                 String name = txtName.getText();
                 Long phoneNumber = Long.valueOf(txtPhone.getText());
                 String day = cmbDay.getSelectedItem().toString();
@@ -415,8 +456,9 @@ public class FrmCreateOrder extends javax.swing.JFrame {
                 cmbYear.setSelectedIndex(0);
                 model.addRow(Datos);
 
-                Order order = new Order(id, name, phoneNumber, day, month, year, measurement);
+                order = new Order(id, name, phoneNumber, day, month, year, measurement);
                 Controller.updateMongo(database, order);
+                JOptionPane.showMessageDialog(this, "Order updated succesfully");
             } catch (MongoException me) {
                 System.err.println("An error ocurred while attempting to connect: " + me);
             }
@@ -456,13 +498,13 @@ public class FrmCreateOrder extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
+    public javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
-    public static javax.swing.JButton btnSave;
-    public static javax.swing.JButton btnUpdateOrder;
-    public static javax.swing.JComboBox<String> cmbDay;
-    public static javax.swing.JComboBox<String> cmbMonth;
-    public static javax.swing.JComboBox<String> cmbYear;
+    public javax.swing.JButton btnSave;
+    public javax.swing.JButton btnUpdateOrder;
+    public javax.swing.JComboBox<String> cmbDay;
+    public javax.swing.JComboBox<String> cmbMonth;
+    public javax.swing.JComboBox<String> cmbYear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -476,8 +518,8 @@ public class FrmCreateOrder extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable tblOrder;
-    public static javax.swing.JTextField txtName;
-    public static javax.swing.JTextField txtOrder;
-    public static javax.swing.JTextField txtPhone;
+    public javax.swing.JTextField txtName;
+    public javax.swing.JTextField txtOrder;
+    public javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 }

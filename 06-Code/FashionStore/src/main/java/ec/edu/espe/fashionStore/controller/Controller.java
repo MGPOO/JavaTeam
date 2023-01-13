@@ -126,10 +126,6 @@ public class Controller {
             System.out.println("Order not found");
         }
 
-    }
-<<<<<<< HEAD
-=======
-
->>>>>>> af57b19a6983f1c7a883497449d72a01ecf9702c
+    }   
 }
 
