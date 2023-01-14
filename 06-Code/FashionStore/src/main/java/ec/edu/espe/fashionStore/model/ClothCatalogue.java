@@ -4,31 +4,31 @@ package ec.edu.espe.fashionstore.model;
  *
  * @author Luis Orozco, Pythons, DCCO-ESPE
  */
-public class ItemCatalogue {
+public class ClothCatalogue {
     
     private int id;
     private String name;
     private String type;
-    private String color; 
+    private String color;
     
     @Override 
     public String toString() {
-        return "Item Catalogue:\n" + "Id = \t" + getId() + "\nName = \t" + getName() + "\nType = \t" + getType() + "\nColor = \t" + getColor();
+        return "Cloth Catalogue:\n" + "Id = \t" + getId() + "\nName = \t" + getName() + "\nType = \t" + getType() + "\nColor = \t" + getColor();
     }
 
-    public ItemCatalogue(int id, String name, String type, String color) {
+    public ClothCatalogue(int id, String name, String type, String color) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.color = color;
     }
-    public ItemCatalogue() {
+    public ClothCatalogue() {
         this.id = 0;
         this.name = "";
         this.type = "";
         this.color = "";
-    }   
-    
+    }
+
     /**
      * @return the id
      */
@@ -84,5 +84,8 @@ public class ItemCatalogue {
     public void setColor(String color) {
         this.color = color;
     }
-
+    
+    
+    
 }
+

@@ -1,14 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.fashionStore.view;
+
+import javax.swing.JOptionPane;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import ec.edu.espe.fashionstore.model.ItemCatalogue;
+import ec.edu.espe.fashionStore.controller.ControllerItemCatalogue;
+import java.awt.event.KeyEvent;
+import java.util.InputMismatchException;
+import javax.swing.JOptionPane;
+import jdk.jfr.Event;
+import org.bson.BsonDocument;
+import org.bson.BsonInt64;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 
 /**
  *
  * @author Luis Orozco, Pythons, DCCO-ESPE
  */
 public class FrmAddItemModel extends javax.swing.JFrame {
+    
+    private static ItemCatalogue itemCatalogue = new ItemCatalogue();
 
     /**
      * Creates new form AddItemModel
@@ -29,13 +48,13 @@ public class FrmAddItemModel extends javax.swing.JFrame {
         pnlinput = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        sprId = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtType = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btnBack1 = new javax.swing.JButton();
         btnSaveChanges1 = new javax.swing.JButton();
@@ -71,15 +90,14 @@ public class FrmAddItemModel extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
-                                .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sprId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtName)
-                                        .addComponent(txtType, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))))))
+                                .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtName)
+                                    .addComponent(txtType, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(pnlinputLayout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         pnlinputLayout.setVerticalGroup(
             pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +107,7 @@ public class FrmAddItemModel extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(sprId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -113,6 +131,11 @@ public class FrmAddItemModel extends javax.swing.JFrame {
         });
 
         btnSaveChanges1.setText("SAVE CHANGES");
+        btnSaveChanges1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveChanges1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -166,6 +189,28 @@ public class FrmAddItemModel extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnBack1ActionPerformed
 
+    private void btnSaveChanges1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveChanges1ActionPerformed
+        int id = Integer.parseInt(txtId.getText());
+
+        String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
+        
+        try ( MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("FashionStore");
+            
+            itemCatalogue.setId(id);
+            String name = txtName.getText();
+            itemCatalogue.setName(name);
+            String type = txtType.getText();
+            itemCatalogue.setType(type);
+            String color = txtColor.getText();
+            itemCatalogue.setColor(color);
+            
+            ControllerItemCatalogue.insertDocumentMongo(database, itemCatalogue);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Item Model save succesfully");
+    }//GEN-LAST:event_btnSaveChanges1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,8 +257,8 @@ public class FrmAddItemModel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pnlinput;
-    private javax.swing.JSpinner sprId;
     private javax.swing.JTextField txtColor;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtType;
     // End of variables declaration//GEN-END:variables

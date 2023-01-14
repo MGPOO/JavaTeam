@@ -95,6 +95,11 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
 
         jLabel8.setText("Leg");
 
+        txtNeck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNeckActionPerformed(evt);
+            }
+        });
         txtNeck.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNeckKeyTyped(evt);
@@ -502,6 +507,10 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     private void txtOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOrderIDActionPerformed
+
+    private void txtNeckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNeckActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNeckActionPerformed
 
     /**
      * @param args the command line arguments

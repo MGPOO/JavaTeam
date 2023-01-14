@@ -59,25 +59,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="txtId" min="-2" pref="80" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="sprSearchId" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                   <Component id="btnFind" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtEditName" max="32767" attributes="0"/>
-                                      <Component id="txtEditType" max="32767" attributes="0"/>
-                                      <Component id="txtEditColor" alignment="0" pref="200" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtEditName" max="32767" attributes="0"/>
+                                  <Component id="txtEditType" max="32767" attributes="0"/>
+                                  <Component id="txtEditColor" alignment="0" pref="200" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -94,8 +91,8 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sprSearchId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnFind" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -128,14 +125,15 @@
             <Property name="text" type="java.lang.String" value="Search Id:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="sprSearchId">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit name: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEditName">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEditNameKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -143,6 +141,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEditType">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEditTypeKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -150,11 +151,22 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEditColor">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEditColorKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnFind">
           <Properties>
             <Property name="text" type="java.lang.String" value="Find"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtId">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIdKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -167,7 +179,7 @@
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="btnBack" min="-2" pref="83" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="pnlSaveChanges" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSaveChanges" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnDelete" min="-2" pref="88" max="-2" attributes="0"/>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
@@ -180,7 +192,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlSaveChanges" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSaveChanges" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="15" max="32767" attributes="0"/>
@@ -197,10 +209,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="pnlSaveChanges">
+        <Component class="javax.swing.JButton" name="btnSaveChanges">
           <Properties>
             <Property name="text" type="java.lang.String" value="SAVE CHANGES"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveChangesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDelete">
           <Properties>

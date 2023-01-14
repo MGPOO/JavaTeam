@@ -4,6 +4,16 @@
  */
 package ec.edu.espe.fashionStore.view;
 
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import ec.edu.espe.fashionStore.controller.ControllerItemCatalogue;
+import ec.edu.espe.fashionstore.model.ItemCatalogue;
+import javax.swing.JOptionPane;
+import org.bson.BsonDocument;
+import org.bson.BsonInt64;
+import org.bson.conversions.Bson;
 /**
  *
  * @author Luis Orozco, Pythons, DCCO-ESPE
@@ -29,7 +39,6 @@ public class FrmEditItem extends javax.swing.JFrame {
         pnlinput = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        sprSearchId = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         txtEditName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -39,8 +48,9 @@ public class FrmEditItem extends javax.swing.JFrame {
         btnFind = new javax.swing.JButton();
         pnlButtons1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
-        pnlSaveChanges1 = new javax.swing.JButton();
+        btnSaveChanges1 = new javax.swing.JButton();
         btnDelete1 = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,11 +60,34 @@ public class FrmEditItem extends javax.swing.JFrame {
 
         jLabel3.setText("Edit name: ");
 
+        txtEditName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEditNameKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Edit type:");
+
+        txtEditType.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEditTypeKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Edit color:");
 
+        txtEditColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEditColorKeyTyped(evt);
+            }
+        });
+
         btnFind.setText("Find");
+        btnFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +96,12 @@ public class FrmEditItem extends javax.swing.JFrame {
             }
         });
 
-        pnlSaveChanges1.setText("SAVE CHANGES");
+        btnSaveChanges1.setText("SAVE CHANGES");
+        btnSaveChanges1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveChanges1ActionPerformed(evt);
+            }
+        });
 
         btnDelete1.setText("DELETE");
         btnDelete1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +118,7 @@ public class FrmEditItem extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnlSaveChanges1)
+                .addComponent(btnSaveChanges1)
                 .addGap(30, 30, 30)
                 .addComponent(btnDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -91,10 +129,16 @@ public class FrmEditItem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlButtons1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(pnlSaveChanges1)
+                    .addComponent(btnSaveChanges1)
                     .addComponent(btnDelete1))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlinputLayout = new javax.swing.GroupLayout(pnlinput);
         pnlinput.setLayout(pnlinputLayout);
@@ -110,22 +154,20 @@ public class FrmEditItem extends javax.swing.JFrame {
                             .addGroup(pnlinputLayout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlinputLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(sprSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49)
+                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
                                         .addComponent(btnFind))
-                                    .addGroup(pnlinputLayout.createSequentialGroup()
-                                        .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtEditName)
-                                            .addComponent(txtEditType)
-                                            .addComponent(txtEditColor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))))
+                                    .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtEditName)
+                                        .addComponent(txtEditType)
+                                        .addComponent(txtEditColor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))))
                         .addGap(0, 90, Short.MAX_VALUE))
                     .addComponent(pnlButtons1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -138,8 +180,8 @@ public class FrmEditItem extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(sprSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFind))
+                    .addComponent(btnFind)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -186,10 +228,147 @@ public class FrmEditItem extends javax.swing.JFrame {
 
     private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
         // TODO add your handling code here:
-        FrmConfirmationDeleteItem confirmationDeleteItem = new FrmConfirmationDeleteItem();
-        confirmationDeleteItem.setVisible(true);
-        this.dispose();
+        if (txtId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Item Model ID field is empty", "Empty Field", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int option = JOptionPane.showConfirmDialog(this, "Do you want to continue?");
+            if (option == 0) {
+
+                int id = Integer.parseInt(txtId.getText());
+                String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
+
+                try ( MongoClient mongoClient = MongoClients.create(uri)) {
+                    MongoDatabase database = mongoClient.getDatabase("FashionStore");
+
+                    try {
+                        //Conection with database server
+                        Bson command = new BsonDocument("ping", new BsonInt64(1));
+                        org.bson.Document commandResult = database.runCommand(command);
+                        System.out.println("Connected successfully to server.");
+                        ItemCatalogue itemCatalogue = ControllerItemCatalogue.readMongo(database, id);
+                        ControllerItemCatalogue.deleteMongo(database, itemCatalogue);
+                        JOptionPane.showMessageDialog(this, "Item Model Delete");
+                    } catch (MongoException me) {
+                        System.err.println("An error ocurred while attempting to connect: " + me);
+                    }
+                }
+            } else if (option == 1) {
+                JOptionPane.showMessageDialog(this, "Operation Cancelled");
+            } else if (option == 2) {
+                FrmItemCatalogue itemCatalogue = new FrmItemCatalogue();
+                itemCatalogue.setVisible(true);
+                this.dispose();
+            }
+        }
+        
     }//GEN-LAST:event_btnDelete1ActionPerformed
+
+    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        int id = Integer.parseInt(txtId.getText());
+        String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
+
+        try ( MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("FashionStore");
+
+            try {
+                //Conection with database server
+                Bson command = new BsonDocument("ping", new BsonInt64(1));
+                org.bson.Document commandResult = database.runCommand(command);
+                System.out.println("Connected successfully to server.");
+
+                ItemCatalogue itemCatalogue = ControllerItemCatalogue.readMongo(database, id);
+
+                String name = itemCatalogue.getName();
+                String type = itemCatalogue.getType();
+                String color = itemCatalogue.getColor();
+
+                txtEditName.setText(name);
+                txtEditType.setText(type);
+                txtEditColor.setText(color);
+
+            } catch (MongoException me) {
+                System.err.println("An error ocurred while attempting to connect: " + me);
+            }
+        }
+    }//GEN-LAST:event_btnFindActionPerformed
+
+    private void btnSaveChanges1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveChanges1ActionPerformed
+        String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
+
+        try ( MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("FashionStore");
+
+            try {
+                //Conection with database server
+                Bson command = new BsonDocument("ping", new BsonInt64(1));
+                org.bson.Document commandResult = database.runCommand(command);
+                System.out.println("Connected successfully to server.");
+
+                
+                int id = Integer.parseInt(txtId.getText());
+                ItemCatalogue itemCatalogue = ControllerItemCatalogue.readMongo(database, id);
+                String name = txtEditName.getText();
+                String type = txtEditType.getText();
+                String color = txtEditColor.getText();
+                
+                
+                itemCatalogue = new ItemCatalogue(id, name, type, color);
+                ControllerItemCatalogue.updateMongo(database, itemCatalogue);
+                JOptionPane.showMessageDialog(this, "Item Model updated succesfully");
+            } catch (MongoException me) {
+                System.err.println("An error ocurred while attempting to connect: " + me);
+            }
+        }
+    }//GEN-LAST:event_btnSaveChanges1ActionPerformed
+
+    private void txtEditNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditNameKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if ((Character.isLetter(c)) || (Character.isWhitespace(c)) || (Character.isISOControl(c))) {
+            txtEditName.setEditable(true);
+        } else {
+            txtEditName.setEditable(false);
+            JOptionPane.showMessageDialog(this, c + " is not accepted here", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtEditNameKeyTyped
+
+    private void txtEditTypeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditTypeKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if ((Character.isLetter(c)) || (Character.isWhitespace(c)) || (Character.isISOControl(c))) {
+            txtEditType.setEditable(true);
+        } else {
+            txtEditType.setEditable(false);
+            JOptionPane.showMessageDialog(this, c + " is not accepted here", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtEditTypeKeyTyped
+
+    private void txtEditColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditColorKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if ((Character.isLetter(c)) || (Character.isWhitespace(c)) || (Character.isISOControl(c))) {
+            txtEditColor.setEditable(true);
+        } else {
+            txtEditColor.setEditable(false);
+            JOptionPane.showMessageDialog(this, c + " is not accepted here", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtEditColorKeyTyped
+
+    private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
+        // TODO add your handling code here:
+        char a = evt.getKeyChar();
+
+        if ((Character.isDigit(a)) || (Character.isISOControl(a))) {
+            txtId.setEditable(true);
+        } else {
+            txtId.setEditable(false);
+            JOptionPane.showMessageDialog(this, a + " is not accepted here", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+        }
+       
+    }//GEN-LAST:event_txtIdKeyTyped
 
     /**
      * @param args the command line arguments
@@ -231,17 +410,17 @@ public class FrmEditItem extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete1;
     private javax.swing.JButton btnFind;
+    private javax.swing.JButton btnSaveChanges1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel pnlButtons1;
-    private javax.swing.JButton pnlSaveChanges1;
     private javax.swing.JPanel pnlinput;
-    private javax.swing.JSpinner sprSearchId;
     private javax.swing.JTextField txtEditColor;
     private javax.swing.JTextField txtEditName;
     private javax.swing.JTextField txtEditType;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }
