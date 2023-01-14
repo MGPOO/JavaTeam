@@ -1,16 +1,23 @@
 package ec.edu.espe.fashionStore.view;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.fashionStore.controller.Controller;
+import ec.edu.espe.fashionstore.model.ClothCatalogue;
 import ec.edu.espe.fashionstore.model.Measurement;
 import ec.edu.espe.fashionstore.model.Order;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.bson.BsonDocument;
 import org.bson.BsonInt64;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 
 /**
@@ -42,6 +49,13 @@ public class FrmFindOrder extends javax.swing.JFrame {
         model.addColumn("Day");
         model.addColumn("Month");
         model.addColumn("Year");
+        model.addColumn("Neck Measurement");
+        model.addColumn("Chest Measurement");
+        model.addColumn("Shoulder Measurement");
+        model.addColumn("Arm Measurement");
+        model.addColumn("Hip Measurement");
+        model.addColumn("Waist Measurement");
+        model.addColumn("Leg Measurement");
         this.tblOrder.setModel(model);
     }
 
@@ -59,6 +73,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnDeleteOrder = new javax.swing.JButton();
         btnUpdateOrder = new javax.swing.JButton();
+        btnViewAllOrders = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +96,12 @@ public class FrmFindOrder extends javax.swing.JFrame {
 
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
                 {},
                 {},
                 {},
@@ -116,10 +137,37 @@ public class FrmFindOrder extends javax.swing.JFrame {
             }
         });
 
+        btnViewAllOrders.setText("View All Orders");
+        btnViewAllOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllOrdersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(184, 184, 184)
+                        .addComponent(btnFind)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewAllOrders))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btnDeleteOrder)
+                        .addGap(206, 206, 206)
+                        .addComponent(btnUpdateOrder)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                        .addComponent(btnback)))
+                .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -129,27 +177,9 @@ public class FrmFindOrder extends javax.swing.JFrame {
                         .addGap(174, 174, 174)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFind)))
-                .addGap(61, 61, 61))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(133, 133, 133))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(btnDeleteOrder)
-                .addGap(43, 43, 43)
-                .addComponent(btnUpdateOrder)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnback)
-                .addGap(45, 45, 45))
+                        .addGap(308, 308, 308)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,19 +189,21 @@ public class FrmFindOrder extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFind))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnFind)
+                        .addComponent(btnViewAllOrders)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnback)
                     .addComponent(btnDeleteOrder)
                     .addComponent(btnUpdateOrder))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,6 +230,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
 
         int id = Integer.parseInt(txtOrder.getText());
+        model.getDataVector().removeAllElements();
         String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
 
         try ( MongoClient mongoClient = MongoClients.create(uri)) {
@@ -212,7 +245,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
 
                 order = Controller.readMongo(database, id);
 
-                String[] Datos = new String[6];
+                String[] Datos = new String[13];
 
                 Datos[0] = String.valueOf(order.getId());
                 Datos[1] = order.getCustomerName();
@@ -220,6 +253,13 @@ public class FrmFindOrder extends javax.swing.JFrame {
                 Datos[3] = order.getDay();
                 Datos[4] = order.getMonth();
                 Datos[5] = order.getYear();
+                Datos[6] = String.valueOf(order.getMeasurement().getNeckMeasurement());
+                Datos[7] = String.valueOf(order.getMeasurement().getChestMeasurement());
+                Datos[8] = String.valueOf(order.getMeasurement().getShoulderMeasurement());
+                Datos[9] = String.valueOf(order.getMeasurement().getArmMeasurement());
+                Datos[10] = String.valueOf(order.getMeasurement().getHipMeasurement());
+                Datos[11] = String.valueOf(order.getMeasurement().getWaistMeasurement());
+                Datos[12] = String.valueOf(order.getMeasurement().getLegMeasurement());
 
                 model.addRow(Datos);
 
@@ -291,6 +331,65 @@ public class FrmFindOrder extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnUpdateOrderActionPerformed
 
+    private void btnViewAllOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllOrdersActionPerformed
+        ArrayList<String> allOrders = new ArrayList<>();
+        Gson gson = new Gson();
+        String[] datos = new String[13];
+        String document = "";
+
+        model.getDataVector().removeAllElements();
+
+        String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
+
+        try ( MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("FashionStore");
+
+            try {
+                //Conection with database server
+                Bson command = new BsonDocument("ping", new BsonInt64(1));
+                org.bson.Document commandResult = database.runCommand(command);
+                System.out.println("Connected successfully to server.");
+
+                MongoCollection<Document> collection = database.getCollection("Orders");
+
+                Document query = collection.find().first();
+                MongoCursor<Document> cursor = collection.find().iterator();
+
+                document = query.toJson();
+                TypeToken<Order> type = new TypeToken<Order>() {
+                };
+                while (cursor.hasNext()) {
+                    allOrders.add(cursor.next().toJson());
+
+                }
+                for (int i = 0; i < allOrders.size(); i++) {
+                    Order allOrdersData = gson.fromJson(allOrders.get(i), type.getType());
+                    datos[0] = String.valueOf(allOrdersData.getId());
+                    datos[1] = allOrdersData.getCustomerName();
+                    datos[2] = String.valueOf(allOrdersData.getPhoneNumber());
+                    datos[3] = allOrdersData.getDay();
+                    datos[4] = allOrdersData.getMonth();
+                    datos[5] = allOrdersData.getYear();
+                    datos[6] = String.valueOf(allOrdersData.getMeasurement().getNeckMeasurement());
+                    datos[7] = String.valueOf(allOrdersData.getMeasurement().getChestMeasurement());
+                    datos[8] = String.valueOf(allOrdersData.getMeasurement().getShoulderMeasurement());
+                    datos[9] = String.valueOf(allOrdersData.getMeasurement().getArmMeasurement());
+                    datos[10] = String.valueOf(allOrdersData.getMeasurement().getHipMeasurement());
+                    datos[11] = String.valueOf(allOrdersData.getMeasurement().getWaistMeasurement());
+                    datos[12] = String.valueOf(allOrdersData.getMeasurement().getLegMeasurement());
+
+                    model.addRow(datos);
+
+                }
+
+            } catch (MongoException me) {
+                System.err.println("An error ocurred while attempting to connect: " + me);
+                JOptionPane.showMessageDialog(this, "An error ocurred while attempting to connect: " + me, "Database Conection", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
+    }//GEN-LAST:event_btnViewAllOrdersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,6 +438,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteOrder;
     private javax.swing.JButton btnFind;
     private javax.swing.JButton btnUpdateOrder;
+    private javax.swing.JButton btnViewAllOrders;
     private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
