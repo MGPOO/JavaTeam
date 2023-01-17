@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.edu.espe.fashionStore.view;
 
 import com.google.gson.Gson;
@@ -46,6 +42,7 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
         model.addColumn("Month");
         model.addColumn("Year");
         this.tblOrderDeadline.setModel(model);
+
     }
 
     /**

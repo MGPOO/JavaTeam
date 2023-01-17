@@ -1,23 +1,17 @@
 package ec.edu.espe.fashionstore.view;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import ec.edu.espe.fashionstore.model.Measurement;
 import ec.edu.espe.fashionstore.model.Order;
 import ec.edu.espe.fashionStore.controller.Controller;
+import ec.edu.espe.fashionStore.controller.ControllerMeasurement;
 import java.awt.event.KeyEvent;
-import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
-import jdk.jfr.Event;
 import org.bson.BsonDocument;
 import org.bson.BsonInt64;
-import org.bson.Document;
 import org.bson.conversions.Bson;
 
 /**
@@ -68,6 +62,8 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         txtOrderID = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtOrderType = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtProductionCost = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -163,6 +159,17 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
 
         txtOrderType.setEnabled(false);
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel14.setText("Production Cost");
+
+        txtProductionCost.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtProductionCost.setEnabled(false);
+        txtProductionCost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProductionCostActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -215,8 +222,14 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(89, 89, 89)
                                         .addComponent(jLabel1)))
-                                .addGap(0, 103, Short.MAX_VALUE)))
-                        .addGap(50, 50, 50))))
+                                .addGap(0, 106, Short.MAX_VALUE)))
+                        .addGap(50, 50, 50))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel14)
+                        .addGap(61, 61, 61)
+                        .addComponent(txtProductionCost, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +275,11 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(txtArm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(193, 193, 193))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtProductionCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
 
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -299,7 +316,7 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(btnExitMeasurement)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(btnSave)
                 .addGap(120, 120, 120)
                 .addComponent(btnDelete)
@@ -308,12 +325,12 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExitMeasurement)
                     .addComponent(btnSave)
                     .addComponent(btnDelete))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -326,9 +343,9 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -350,22 +367,8 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                 org.bson.Document commandResult = database.runCommand(command);
                 System.out.println("Connected successfully to server.");
 
-                float neck = Float.parseFloat(txtNeck.getText());
-                measurement.setNeckMeasurement(neck);
-                float chest = Float.parseFloat(txtChest.getText());
-                measurement.setChestMeasurement(chest);
-                float shoulder = Float.parseFloat(txtShoulder.getText());
-                measurement.setShoulderMeasurement(shoulder);
-                float arm = Float.parseFloat(txtArm.getText());
-                measurement.setArmMeasurement(arm);
-                float hip = Float.parseFloat(txtHip.getText());
-                measurement.setHipMeasurement(hip);
-                float waist = Float.parseFloat(txtWaist.getText());
-                measurement.setWaistMeasurement(waist);
-                float leg = Float.parseFloat(txtLeg.getText());
-                measurement.setLegMeasurement(leg);
-
-                order.setMeasurement(measurement);
+                updateMeasurement(order);
+                txtProductionCost.setText(String.valueOf(ControllerMeasurement.calculateProductionCost(measurement)));
                 Controller.updateMongo(database, order);
 
                 JOptionPane.showMessageDialog(this, "Measurements saved succesfully");
@@ -376,6 +379,24 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void updateMeasurement(Order order1) throws NumberFormatException {
+        float neck = Float.parseFloat(txtNeck.getText());
+        measurement.setNeckMeasurement(neck);
+        float chest = Float.parseFloat(txtChest.getText());
+        measurement.setChestMeasurement(chest);
+        float shoulder = Float.parseFloat(txtShoulder.getText());
+        measurement.setShoulderMeasurement(shoulder);
+        float arm = Float.parseFloat(txtArm.getText());
+        measurement.setArmMeasurement(arm);
+        float hip = Float.parseFloat(txtHip.getText());
+        measurement.setHipMeasurement(hip);
+        float waist = Float.parseFloat(txtWaist.getText());
+        measurement.setWaistMeasurement(waist);
+        float leg = Float.parseFloat(txtLeg.getText());
+        measurement.setLegMeasurement(leg);
+        order1.setMeasurement(measurement);
+    }
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
 
@@ -396,27 +417,7 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                     org.bson.Document commandResult = database.runCommand(command);
                     System.out.println("Connected successfully to server.");
 
-                    float neck = 0.0F;
-                    measurement.setNeckMeasurement(neck);
-                    txtNeck.setText(String.valueOf(neck));
-                    float chest = 0.0F;
-                    measurement.setChestMeasurement(chest);
-                    txtChest.setText(String.valueOf(chest));
-                    float shoulder = 0.0F;
-                    measurement.setShoulderMeasurement(shoulder);
-                    txtShoulder.setText(String.valueOf(shoulder));
-                    float arm = 0.0F;
-                    measurement.setArmMeasurement(arm);
-                    txtArm.setText(String.valueOf(arm));
-                    float hip = 0.0F;
-                    measurement.setHipMeasurement(hip);
-                    txtHip.setText(String.valueOf(hip));
-                    float waist = 0.0F;
-                    measurement.setWaistMeasurement(waist);
-                    txtWaist.setText(String.valueOf(waist));
-                    float leg = 0.0F;
-                    measurement.setLegMeasurement(leg);
-                    txtLeg.setText(String.valueOf(leg));
+                    deleteMeasurement();
 
                     order.setMeasurement(measurement);
                     Controller.updateMongo(database, order);
@@ -429,6 +430,30 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void deleteMeasurement() {
+        float neck = 0.0F;
+        measurement.setNeckMeasurement(neck);
+        txtNeck.setText(String.valueOf(neck));
+        float chest = 0.0F;
+        measurement.setChestMeasurement(chest);
+        txtChest.setText(String.valueOf(chest));
+        float shoulder = 0.0F;
+        measurement.setShoulderMeasurement(shoulder);
+        txtShoulder.setText(String.valueOf(shoulder));
+        float arm = 0.0F;
+        measurement.setArmMeasurement(arm);
+        txtArm.setText(String.valueOf(arm));
+        float hip = 0.0F;
+        measurement.setHipMeasurement(hip);
+        txtHip.setText(String.valueOf(hip));
+        float waist = 0.0F;
+        measurement.setWaistMeasurement(waist);
+        txtWaist.setText(String.valueOf(waist));
+        float leg = 0.0F;
+        measurement.setLegMeasurement(leg);
+        txtLeg.setText(String.valueOf(leg));
+    }
 
     private void txtNeckKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNeckKeyTyped
         char character = evt.getKeyChar();
@@ -512,6 +537,10 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNeckActionPerformed
 
+    private void txtProductionCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductionCostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProductionCostActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -557,6 +586,7 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -574,6 +604,7 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     public javax.swing.JTextField txtNeck;
     public javax.swing.JTextField txtOrderID;
     public javax.swing.JTextField txtOrderType;
+    private javax.swing.JTextField txtProductionCost;
     public javax.swing.JTextField txtShoulder;
     public javax.swing.JTextField txtWaist;
     // End of variables declaration//GEN-END:variables
