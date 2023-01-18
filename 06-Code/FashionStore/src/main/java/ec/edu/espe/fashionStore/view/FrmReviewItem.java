@@ -61,6 +61,7 @@ public class FrmReviewItem extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Review Item");
 
         jLabel1.setText("REVIEW ITEM");
 

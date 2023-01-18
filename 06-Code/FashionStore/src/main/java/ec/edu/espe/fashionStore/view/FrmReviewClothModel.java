@@ -62,6 +62,7 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Review Cloth Model");
 
         jLabel1.setText("REVIEW CLOTH MODEL");
 

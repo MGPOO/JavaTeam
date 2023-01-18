@@ -61,6 +61,7 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
         BackCalendarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Calendar Notifications");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Calendar Notifications");

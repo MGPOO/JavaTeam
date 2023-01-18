@@ -57,6 +57,7 @@ public class FrmEditClothModel extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Edit Cloth Model");
 
         jLabel1.setText("EDIT CLOTH MODEL");
 

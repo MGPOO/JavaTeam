@@ -61,6 +61,7 @@ public class FrmAddClothModel extends javax.swing.JFrame {
         btnSaveChanges = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Add Cloth Model");
 
         jLabel1.setText("ADD CLOTH MODEL");
 

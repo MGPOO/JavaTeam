@@ -53,6 +53,7 @@ public class FrmEditItem extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Edit Item");
 
         jLabel1.setText("EDIT ITEM");
 

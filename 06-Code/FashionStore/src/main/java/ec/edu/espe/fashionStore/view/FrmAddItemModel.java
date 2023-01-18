@@ -60,6 +60,7 @@ public class FrmAddItemModel extends javax.swing.JFrame {
         btnSaveChanges1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Add Item");
 
         jLabel1.setText("ADD ITEM");
 

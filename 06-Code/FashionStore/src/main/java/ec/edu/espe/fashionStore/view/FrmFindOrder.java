@@ -80,6 +80,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
         btnPrintReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fashion Store - Find Order");
 
         jLabel1.setText("Order ID:");
 
