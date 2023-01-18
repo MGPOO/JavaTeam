@@ -159,7 +159,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="btnBack1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="77" max="32767" attributes="0"/>
+                  <EmptySpace pref="85" max="32767" attributes="0"/>
                   <Component id="btnSaveChanges1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               </Group>
@@ -181,7 +181,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnBack1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="BACK"/>
+            <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBack1ActionPerformed"/>
@@ -189,7 +189,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSaveChanges1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="SAVE CHANGES"/>
+            <Property name="text" type="java.lang.String" value="Save  Changes"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveChanges1ActionPerformed"/>

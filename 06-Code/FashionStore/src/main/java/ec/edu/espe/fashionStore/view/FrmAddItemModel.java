@@ -123,14 +123,14 @@ public class FrmAddItemModel extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        btnBack1.setText("BACK");
+        btnBack1.setText("Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBack1ActionPerformed(evt);
             }
         });
 
-        btnSaveChanges1.setText("SAVE CHANGES");
+        btnSaveChanges1.setText("Save  Changes");
         btnSaveChanges1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveChanges1ActionPerformed(evt);
@@ -144,7 +144,7 @@ public class FrmAddItemModel extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(btnBack1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(btnSaveChanges1)
                 .addGap(67, 67, 67))
         );

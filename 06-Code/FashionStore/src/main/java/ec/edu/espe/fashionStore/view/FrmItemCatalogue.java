@@ -32,6 +32,8 @@ public class FrmItemCatalogue extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        pnlButtons.setToolTipText("");
+
         jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 14)); // NOI18N
         jLabel1.setText("Item Catalogue");
 

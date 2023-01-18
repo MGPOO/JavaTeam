@@ -36,30 +36,30 @@ public class FrmClothCatalogue extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 14)); // NOI18N
-        jLabel1.setText(" Clothes Catalog");
+        jLabel1.setText(" Cloth Catalogue");
 
-        btnAddClothModel.setText("ADD CLOTH MODEL");
+        btnAddClothModel.setText("Add Cloth Model");
         btnAddClothModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddClothModelActionPerformed(evt);
             }
         });
 
-        btnEditClothModel.setText("EDIT CLOTH MODEL");
+        btnEditClothModel.setText("Edit Cloth Model");
         btnEditClothModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditClothModelActionPerformed(evt);
             }
         });
 
-        btnReviewClothModel.setText("REVIEW CLOTH MODEL");
+        btnReviewClothModel.setText("Review Cloth Model");
         btnReviewClothModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReviewClothModelActionPerformed(evt);
             }
         });
 
-        btnBack.setText("BACK");
+        btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -75,19 +75,20 @@ public class FrmClothCatalogue extends javax.swing.JFrame {
                     .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlButtonsLayout.createSequentialGroup()
                             .addGap(128, 128, 128)
-                            .addComponent(jLabel1))
-                        .addGroup(pnlButtonsLayout.createSequentialGroup()
-                            .addGap(113, 113, 113)
-                            .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnEditClothModel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnReviewClothModel)))
+                            .addComponent(jLabel1)
+                            .addGap(16, 16, 16))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlButtonsLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(btnAddClothModel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnAddClothModel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEditClothModel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnlButtonsLayout.createSequentialGroup()
-                        .addGap(138, 138, 138)
+                        .addGap(121, 121, 121)
+                        .addComponent(btnReviewClothModel))
+                    .addGroup(pnlButtonsLayout.createSequentialGroup()
+                        .addGap(140, 140, 140)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         pnlButtonsLayout.setVerticalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,13 +97,13 @@ public class FrmClothCatalogue extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAddClothModel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnEditClothModel)
                 .addGap(18, 18, 18)
                 .addComponent(btnReviewClothModel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addGap(35, 35, 35))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

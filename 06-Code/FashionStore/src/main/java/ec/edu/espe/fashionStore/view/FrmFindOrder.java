@@ -132,7 +132,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Information of the Order");
+        jLabel3.setText("Order Information");
 
         btnDeleteOrder.setText("Delete");
         btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -175,14 +175,11 @@ public class FrmFindOrder extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnFind)
-                                .addGap(92, 92, 92)
-                                .addComponent(btnViewAllOrders)
-                                .addGap(61, 61, 61)
-                                .addComponent(btnPrintReport))))
+                        .addComponent(btnFind)
+                        .addGap(92, 92, 92)
+                        .addComponent(btnViewAllOrders)
+                        .addGap(61, 61, 61)
+                        .addComponent(btnPrintReport))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(45, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -196,7 +193,9 @@ public class FrmFindOrder extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
                 .addGap(289, 289, 289)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

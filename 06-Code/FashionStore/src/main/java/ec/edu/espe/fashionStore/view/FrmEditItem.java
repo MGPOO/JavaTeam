@@ -89,21 +89,21 @@ public class FrmEditItem extends javax.swing.JFrame {
             }
         });
 
-        btnBack.setText("BACK");
+        btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
-        btnSaveChanges1.setText("SAVE CHANGES");
+        btnSaveChanges1.setText("Save Changes");
         btnSaveChanges1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveChanges1ActionPerformed(evt);
             }
         });
 
-        btnDelete1.setText("DELETE");
+        btnDelete1.setText("Delete");
         btnDelete1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelete1ActionPerformed(evt);
@@ -121,7 +121,7 @@ public class FrmEditItem extends javax.swing.JFrame {
                 .addComponent(btnSaveChanges1)
                 .addGap(30, 30, 30)
                 .addComponent(btnDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         pnlButtons1Layout.setVerticalGroup(
             pnlButtons1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,30 +147,29 @@ public class FrmEditItem extends javax.swing.JFrame {
             .addGroup(pnlinputLayout.createSequentialGroup()
                 .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlinputLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
                         .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlinputLayout.createSequentialGroup()
-                                .addGap(138, 138, 138)
-                                .addComponent(jLabel1))
-                            .addGroup(pnlinputLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlinputLayout.createSequentialGroup()
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnFind))
-                                    .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtEditName)
-                                        .addComponent(txtEditType)
-                                        .addComponent(txtEditColor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))))
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnFind))
+                            .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtEditName)
+                                .addComponent(txtEditType)
+                                .addComponent(txtEditColor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
                         .addGap(0, 90, Short.MAX_VALUE))
                     .addComponent(pnlButtons1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlinputLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(164, 164, 164))
         );
         pnlinputLayout.setVerticalGroup(
             pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
