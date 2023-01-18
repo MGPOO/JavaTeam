@@ -315,39 +315,48 @@ public class FrmCreateOrder extends javax.swing.JFrame {
                 org.bson.Document commandResult = database.runCommand(command);
                 System.out.println("Connected successfully to server.");
 
-                //comvertir los parametros de acuerdo al constructor
-                String[] Datos = new String[6];
-                Datos[0] = txtOrder.getText();
-                Datos[1] = txtName.getText();
-                Datos[2] = txtPhone.getText();
-                Datos[3] = cmbDay.getSelectedItem().toString();
-                Datos[4] = cmbMonth.getSelectedItem().toString();
-                Datos[5] = cmbYear.getSelectedItem().toString();
-                Measurement measurement = new Measurement();
                 int id = Integer.parseInt(txtOrder.getText());
-                String name = txtName.getText();
-                Long phoneNumber = Long.valueOf(txtPhone.getText());
-                String day = cmbDay.getSelectedItem().toString();
-                String month = cmbMonth.getSelectedItem().toString();
-                String year = cmbYear.getSelectedItem().toString();
-                txtOrder.setEnabled(false);
-                txtName.setEnabled(false);
-                txtPhone.setEnabled(false);
-                cmbDay.setEnabled(false);
-                cmbMonth.setEnabled(false);
-                cmbYear.setEnabled(false);
-                model.addRow(Datos);
+                boolean existOrder = false;
+                existOrder = Controller.noRepeatOrder(database, id, existOrder);
+                if (existOrder == false) {
+                    String[] Datos = new String[6];
+                    Datos[0] = txtOrder.getText();
+                    Datos[1] = txtName.getText();
+                    Datos[2] = txtPhone.getText();
+                    Datos[3] = cmbDay.getSelectedItem().toString();
+                    Datos[4] = cmbMonth.getSelectedItem().toString();
+                    Datos[5] = cmbYear.getSelectedItem().toString();
+                    Measurement measurement = new Measurement();
 
-                Order order = new Order(id, name, phoneNumber, day, month, year, measurement);
-                Controller.insertDocumentMongo(database, order);
-                JOptionPane.showMessageDialog(this, "Order saved succesfully");
+                    String name = txtName.getText();
+                    Long phoneNumber = Long.valueOf(txtPhone.getText());
+                    String day = cmbDay.getSelectedItem().toString();
+                    String month = cmbMonth.getSelectedItem().toString();
+                    String year = cmbYear.getSelectedItem().toString();
+                    txtOrder.setEnabled(false);
+                    txtName.setEnabled(false);
+                    txtPhone.setEnabled(false);
+                    cmbDay.setEnabled(false);
+                    cmbMonth.setEnabled(false);
+                    cmbYear.setEnabled(false);
+                    model.addRow(Datos);
+
+                    Order order = new Order(id, name, phoneNumber, day, month, year, measurement);
+                    Controller.insertDocumentMongo(database, order);
+                    JOptionPane.showMessageDialog(this, "Order saved succesfully");
+
+                    btnSave.setEnabled(false);
+                    btnAdd.setEnabled(true);
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Id entered is already used in another order",
+                            "Id already used", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (MongoException me) {
                 System.err.println("An error ocurred while attempting to connect: " + me);
             }
         }
 
-        btnSave.setEnabled(false);
-        btnAdd.setEnabled(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
@@ -435,7 +444,6 @@ public class FrmCreateOrder extends javax.swing.JFrame {
                 Bson command = new BsonDocument("ping", new BsonInt64(1));
                 org.bson.Document commandResult = database.runCommand(command);
                 System.out.println("Connected successfully to server.");
-                
 
                 //comvertir los parametros de acuerdo al constructor
                 String[] Datos = new String[6];

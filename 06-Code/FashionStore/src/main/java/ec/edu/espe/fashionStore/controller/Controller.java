@@ -70,10 +70,10 @@ public class Controller {
 
     }
 
-    public static boolean noRepeatOrder(MongoDatabase database, Order order, boolean existOrder) {
+    public static boolean noRepeatOrder(MongoDatabase database, int id, boolean existOrder) {
 
         MongoCollection<Document> collection2 = database.getCollection("Orders");
-        Bson filter = Filters.and(Filters.all("id", order.getId()));
+        Bson filter = Filters.and(Filters.all("id", id));
 
         if (collection2.find(filter).first() == null) {
             existOrder = false;
