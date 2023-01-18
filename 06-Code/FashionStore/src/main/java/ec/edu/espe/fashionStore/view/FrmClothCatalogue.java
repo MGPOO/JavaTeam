@@ -45,7 +45,7 @@ public class FrmClothCatalogue extends javax.swing.JFrame {
             }
         });
 
-        btnEditClothModel.setText("EDIT CLOTHE MODEL");
+        btnEditClothModel.setText("EDIT CLOTH MODEL");
         btnEditClothModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditClothModelActionPerformed(evt);
@@ -143,7 +143,9 @@ public class FrmClothCatalogue extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReviewClothModelActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
+        this.dispose();
        
     }//GEN-LAST:event_btnBackActionPerformed
 

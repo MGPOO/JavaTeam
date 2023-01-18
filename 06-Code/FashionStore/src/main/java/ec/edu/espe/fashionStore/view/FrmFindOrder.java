@@ -227,7 +227,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
-        MenuOrder backmenu = new MenuOrder();
+        FrmMenuOrder backmenu = new FrmMenuOrder();
         backmenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnbackActionPerformed
@@ -318,7 +318,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
             } else if (option == 1) {
                 JOptionPane.showMessageDialog(this, "Operation Cancelled");
             } else if (option == 2) {
-                MenuOrder backmenu = new MenuOrder();
+                FrmMenuOrder backmenu = new FrmMenuOrder();
                 backmenu.setVisible(true);
                 this.dispose();
             }

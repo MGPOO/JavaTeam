@@ -35,28 +35,33 @@ public class FrmItemCatalogue extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 14)); // NOI18N
         jLabel1.setText("Item Catalogue");
 
-        btnAddItem.setText("ADD ITEM");
+        btnAddItem.setText("Add Item");
         btnAddItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddItemActionPerformed(evt);
             }
         });
 
-        btnEditItem.setText("EDIT ITEM");
+        btnEditItem.setText("Edit Item");
         btnEditItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditItemActionPerformed(evt);
             }
         });
 
-        btnReviewItem.setText("REVIEW ITEM");
+        btnReviewItem.setText("Review Item");
         btnReviewItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReviewItemActionPerformed(evt);
             }
         });
 
-        jButton1.setText("BACK");
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
         pnlButtons.setLayout(pnlButtonsLayout);
@@ -130,6 +135,12 @@ public class FrmItemCatalogue extends javax.swing.JFrame {
         editItemModel.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEditItemActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

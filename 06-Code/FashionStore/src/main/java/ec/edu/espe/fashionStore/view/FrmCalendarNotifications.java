@@ -58,6 +58,7 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrderDeadline = new javax.swing.JTable();
+        BackCalendarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +86,13 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblOrderDeadline);
 
+        BackCalendarButton.setText("Back");
+        BackCalendarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackCalendarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,8 +106,10 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jButton1)))
+                        .addGap(96, 96, 96)
+                        .addComponent(jButton1)
+                        .addGap(110, 110, 110)
+                        .addComponent(BackCalendarButton)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,7 +118,9 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(BackCalendarButton))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -170,6 +182,12 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BackCalendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackCalendarButtonActionPerformed
+        FrmCalendar calendar = new FrmCalendar();
+        calendar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackCalendarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,6 +232,7 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackCalendarButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

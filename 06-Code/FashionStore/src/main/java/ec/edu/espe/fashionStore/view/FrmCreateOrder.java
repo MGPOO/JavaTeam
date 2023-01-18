@@ -297,7 +297,7 @@ public class FrmCreateOrder extends javax.swing.JFrame {
 
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        MenuOrder backmenu = new MenuOrder();
+        FrmMenuOrder backmenu = new FrmMenuOrder();
         backmenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
