@@ -9,11 +9,14 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.fashionStore.controller.Controller;
-import ec.edu.espe.fashionstore.model.ClothCatalogue;
 import ec.edu.espe.fashionstore.model.Measurement;
 import ec.edu.espe.fashionstore.model.Order;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.bson.BsonDocument;
 import org.bson.BsonInt64;
@@ -74,18 +77,25 @@ public class FrmFindOrder extends javax.swing.JFrame {
         btnDeleteOrder = new javax.swing.JButton();
         btnUpdateOrder = new javax.swing.JButton();
         btnViewAllOrders = new javax.swing.JButton();
+        btnPrintReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Order ID:");
 
+        txtOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrderActionPerformed(evt);
+            }
+        });
         txtOrder.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtOrderKeyTyped(evt);
             }
         });
 
-        jLabel2.setText("Fashion Store");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setText("Find Order");
 
         btnFind.setText("Find");
         btnFind.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +131,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Information of the Order");
 
         btnDeleteOrder.setText("Delete");
@@ -144,6 +155,14 @@ public class FrmFindOrder extends javax.swing.JFrame {
             }
         });
 
+        btnPrintReport.setText("Print Report");
+        btnPrintReport.setEnabled(false);
+        btnPrintReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintReportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,59 +170,57 @@ public class FrmFindOrder extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
                         .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(184, 184, 184)
-                        .addComponent(btnFind)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnViewAllOrders))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnFind)
+                                .addGap(92, 92, 92)
+                                .addComponent(btnViewAllOrders)
+                                .addGap(61, 61, 61)
+                                .addComponent(btnPrintReport))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(btnDeleteOrder)
-                        .addGap(206, 206, 206)
-                        .addComponent(btnUpdateOrder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
-                        .addComponent(btnback)))
+                        .addContainerGap(45, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDeleteOrder)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnUpdateOrder)
+                                .addGap(261, 261, 261)
+                                .addComponent(btnback)))))
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
-                        .addComponent(jLabel3)))
+                .addGap(289, 289, 289)
+                .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel2)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnFind)
-                        .addComponent(btnViewAllOrders)))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFind)
+                    .addComponent(btnViewAllOrders)
+                    .addComponent(btnPrintReport)
+                    .addComponent(jLabel1))
+                .addGap(45, 45, 45)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnback)
-                    .addComponent(btnDeleteOrder)
-                    .addComponent(btnUpdateOrder))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnUpdateOrder)
+                    .addComponent(btnDeleteOrder))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -262,6 +279,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
                 Datos[12] = String.valueOf(order.getMeasurement().getLegMeasurement());
 
                 model.addRow(Datos);
+                btnPrintReport.setEnabled(true);
 
             } catch (MongoException me) {
                 System.err.println("An error ocurred while attempting to connect: " + me);
@@ -379,6 +397,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
                     datos[12] = String.valueOf(allOrdersData.getMeasurement().getLegMeasurement());
 
                     model.addRow(datos);
+                    btnPrintReport.setEnabled(true);
 
                 }
 
@@ -389,6 +408,21 @@ public class FrmFindOrder extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnViewAllOrdersActionPerformed
+
+    private void btnPrintReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReportActionPerformed
+        MessageFormat header = new MessageFormat("Orders Report");
+        MessageFormat footer = new MessageFormat("page {0,number,integer}");
+
+        try {
+            tblOrder.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }//GEN-LAST:event_btnPrintReportActionPerformed
+
+    private void txtOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,6 +471,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteOrder;
     private javax.swing.JButton btnFind;
+    private javax.swing.JButton btnPrintReport;
     private javax.swing.JButton btnUpdateOrder;
     private javax.swing.JButton btnViewAllOrders;
     private javax.swing.JButton btnback;
