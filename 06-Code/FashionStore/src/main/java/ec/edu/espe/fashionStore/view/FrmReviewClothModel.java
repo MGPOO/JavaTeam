@@ -60,6 +60,12 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
         btnFind = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mnuFashionStore = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fashion Store - Review Cloth Model");
@@ -117,7 +123,7 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
                 .addComponent(btnFind)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         btnBack.setText("BACK");
@@ -142,6 +148,35 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
                 .addGap(0, 23, Short.MAX_VALUE)
                 .addComponent(btnBack))
         );
+
+        mnuFashionStore.setText("Fashion Store");
+
+        jMenuItem1.setText("About");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuFashionStore.add(jMenuItem1);
+
+        jMenuItem2.setText("Exit");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        mnuFashionStore.add(jMenuItem2);
+
+        jMenuBar1.add(mnuFashionStore);
+
+        jMenu6.setText("Help");
+
+        jMenuItem3.setText("Report Issues");
+        jMenu6.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu6);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -227,6 +262,16 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnFindActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        FrmAbout about = new FrmAbout();
+        about.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,9 +312,15 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFind;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu mnuFashionStore;
     private javax.swing.JTable tblClothModels;
     // End of variables declaration//GEN-END:variables
 }
