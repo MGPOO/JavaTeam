@@ -130,7 +130,6 @@ public class FrmFindOrder extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblOrder);
 
-        btnback.setBackground(new java.awt.Color(153, 255, 153));
         btnback.setText("< Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +140,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Order Information");
 
+        btnDeleteOrder.setBackground(new java.awt.Color(255, 0, 0));
         btnDeleteOrder.setText("Delete");
         btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,16 +217,17 @@ public class FrmFindOrder extends javax.swing.JFrame {
                         .addGap(61, 61, 61)
                         .addComponent(btnPrintReport))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(45, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDeleteOrder)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnUpdateOrder)
-                                .addGap(261, 261, 261)
-                                .addComponent(btnback)))))
-                .addGap(45, 45, 45))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(btnback)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdateOrder)
+                        .addGap(126, 126, 126)
+                        .addComponent(btnDeleteOrder)
+                        .addGap(135, 135, 135)))
+                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addGap(289, 289, 289)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,11 +247,11 @@ public class FrmFindOrder extends javax.swing.JFrame {
                     .addComponent(btnViewAllOrders)
                     .addComponent(btnPrintReport)
                     .addComponent(jLabel1))
-                .addGap(45, 45, 45)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnback)
                     .addComponent(btnUpdateOrder)

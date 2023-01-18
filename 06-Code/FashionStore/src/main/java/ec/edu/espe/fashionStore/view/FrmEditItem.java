@@ -110,6 +110,7 @@ public class FrmEditItem extends javax.swing.JFrame {
             }
         });
 
+        btnDelete1.setBackground(new java.awt.Color(255, 0, 0));
         btnDelete1.setText("Delete");
         btnDelete1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

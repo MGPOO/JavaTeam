@@ -55,7 +55,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Pristina", 0, 36)); // NOI18N
         jLabel2.setText("Fashion Store");
 
-        jButton1.setText("Back");
+        jButton1.setText("< Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

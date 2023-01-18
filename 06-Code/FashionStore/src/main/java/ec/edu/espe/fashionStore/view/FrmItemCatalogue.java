@@ -65,7 +65,7 @@ public class FrmItemCatalogue extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Back");
+        jButton1.setText("< Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

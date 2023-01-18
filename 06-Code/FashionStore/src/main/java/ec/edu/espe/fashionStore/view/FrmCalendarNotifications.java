@@ -93,7 +93,7 @@ public class FrmCalendarNotifications extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblOrderDeadline);
 
-        BackCalendarButton.setText("Back");
+        BackCalendarButton.setText("< Back");
         BackCalendarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackCalendarButtonActionPerformed(evt);

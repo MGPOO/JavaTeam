@@ -210,22 +210,23 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 70, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel6)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(123, 123, 123)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtHip, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtWaist, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtLeg, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel9)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel13)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(txtOrderType))))
+                                                .addComponent(txtOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel7)
+                                                    .addComponent(jLabel8))
+                                                .addGap(38, 38, 38)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtLeg, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtWaist, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtHip, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtProductionCost, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -236,14 +237,15 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(89, 89, 89)
                                         .addComponent(jLabel1)))
-                                .addGap(0, 106, Short.MAX_VALUE)))
-                        .addGap(50, 50, 50))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(122, 122, 122))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtOrderID)
@@ -283,16 +285,16 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(txtArm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(42, 42, 42)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtProductionCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                .addGap(13, 13, 13))
         );
 
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btnSave.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,7 +303,7 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         });
 
         btnDelete.setBackground(new java.awt.Color(255, 102, 102));
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setEnabled(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -310,8 +312,8 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
             }
         });
 
-        btnExitMeasurement.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnExitMeasurement.setText("Go Back");
+        btnExitMeasurement.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnExitMeasurement.setText("< Back");
         btnExitMeasurement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitMeasurementActionPerformed(evt);
@@ -323,23 +325,23 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(btnExitMeasurement)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
+                .addComponent(btnExitMeasurement, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave)
-                .addGap(120, 120, 120)
+                .addGap(105, 105, 105)
                 .addComponent(btnDelete)
-                .addGap(47, 47, 47))
+                .addGap(124, 124, 124))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExitMeasurement)
+                    .addComponent(btnExitMeasurement, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave)
                     .addComponent(btnDelete))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         mnuFashionStore.setText("Fashion Store");
@@ -375,8 +377,10 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,91 +497,9 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         txtLeg.setText(String.valueOf(leg));
     }
 
-    private void txtNeckKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNeckKeyTyped
-        char character = evt.getKeyChar();
-        if (((character < '0') || (character > '9'))
-                && (character != KeyEvent.VK_BACK_SPACE)
-                && (character != '.' || txtNeck.getText().contains("."))) {
-            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtNeckKeyTyped
-
-    private void txtChestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChestKeyTyped
-        char character = evt.getKeyChar();
-        if (((character < '0') || (character > '9'))
-                && (character != KeyEvent.VK_BACK_SPACE)
-                && (character != '.' || txtChest.getText().contains("."))) {
-            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtChestKeyTyped
-
-    private void txtShoulderKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtShoulderKeyTyped
-        char character = evt.getKeyChar();
-        if (((character < '0') || (character > '9'))
-                && (character != KeyEvent.VK_BACK_SPACE)
-                && (character != '.' || txtShoulder.getText().contains("."))) {
-            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtShoulderKeyTyped
-
-    private void txtArmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArmKeyTyped
-        char character = evt.getKeyChar();
-        if (((character < '0') || (character > '9'))
-                && (character != KeyEvent.VK_BACK_SPACE)
-                && (character != '.' || txtArm.getText().contains("."))) {
-            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtArmKeyTyped
-
-    private void txtHipKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHipKeyTyped
-        char character = evt.getKeyChar();
-        if (((character < '0') || (character > '9'))
-                && (character != KeyEvent.VK_BACK_SPACE)
-                && (character != '.' || txtHip.getText().contains("."))) {
-            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtHipKeyTyped
-
-    private void txtWaistKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWaistKeyTyped
-        char character = evt.getKeyChar();
-        if (((character < '0') || (character > '9'))
-                && (character != KeyEvent.VK_BACK_SPACE)
-                && (character != '.' || txtWaist.getText().contains("."))) {
-            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtWaistKeyTyped
-
-    private void txtLegKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLegKeyTyped
-        char character = evt.getKeyChar();
-        if (((character < '0') || (character > '9'))
-                && (character != KeyEvent.VK_BACK_SPACE)
-                && (character != '.' || txtLeg.getText().contains("."))) {
-            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtLegKeyTyped
-
     private void btnExitMeasurementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitMeasurementActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnExitMeasurementActionPerformed
-
-    private void txtOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrderIDActionPerformed
-
-    private void txtNeckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNeckActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNeckActionPerformed
-
-    private void txtProductionCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductionCostActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProductionCostActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         FrmAbout about = new FrmAbout();
@@ -588,6 +510,88 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void txtProductionCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductionCostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProductionCostActionPerformed
+
+    private void txtOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrderIDActionPerformed
+
+    private void txtLegKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLegKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+            && (character != KeyEvent.VK_BACK_SPACE)
+            && (character != '.' || txtLeg.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtLegKeyTyped
+
+    private void txtWaistKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWaistKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+            && (character != KeyEvent.VK_BACK_SPACE)
+            && (character != '.' || txtWaist.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtWaistKeyTyped
+
+    private void txtHipKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHipKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+            && (character != KeyEvent.VK_BACK_SPACE)
+            && (character != '.' || txtHip.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtHipKeyTyped
+
+    private void txtArmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArmKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+            && (character != KeyEvent.VK_BACK_SPACE)
+            && (character != '.' || txtArm.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtArmKeyTyped
+
+    private void txtShoulderKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtShoulderKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+            && (character != KeyEvent.VK_BACK_SPACE)
+            && (character != '.' || txtShoulder.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtShoulderKeyTyped
+
+    private void txtChestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChestKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+            && (character != KeyEvent.VK_BACK_SPACE)
+            && (character != '.' || txtChest.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtChestKeyTyped
+
+    private void txtNeckKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNeckKeyTyped
+        char character = evt.getKeyChar();
+        if (((character < '0') || (character > '9'))
+            && (character != KeyEvent.VK_BACK_SPACE)
+            && (character != '.' || txtNeck.getText().contains("."))) {
+            JOptionPane.showMessageDialog(this, character + " is not accepted", "Warning on input data", JOptionPane.WARNING_MESSAGE);
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNeckKeyTyped
+
+    private void txtNeckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNeckActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNeckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -651,15 +655,15 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu mnuFashionStore;
-    public javax.swing.JTextField txtArm;
-    public javax.swing.JTextField txtChest;
-    public javax.swing.JTextField txtHip;
-    public javax.swing.JTextField txtLeg;
-    public javax.swing.JTextField txtNeck;
-    public javax.swing.JTextField txtOrderID;
-    public javax.swing.JTextField txtOrderType;
+    private javax.swing.JTextField txtArm;
+    private javax.swing.JTextField txtChest;
+    private javax.swing.JTextField txtHip;
+    private javax.swing.JTextField txtLeg;
+    private javax.swing.JTextField txtNeck;
+    private javax.swing.JTextField txtOrderID;
+    private javax.swing.JTextField txtOrderType;
     private javax.swing.JTextField txtProductionCost;
-    public javax.swing.JTextField txtShoulder;
-    public javax.swing.JTextField txtWaist;
+    private javax.swing.JTextField txtShoulder;
+    private javax.swing.JTextField txtWaist;
     // End of variables declaration//GEN-END:variables
 }

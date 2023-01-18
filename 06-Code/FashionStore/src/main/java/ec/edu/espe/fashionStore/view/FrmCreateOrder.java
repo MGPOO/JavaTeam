@@ -133,7 +133,6 @@ public class FrmCreateOrder extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblOrder);
 
-        btnBack.setBackground(new java.awt.Color(153, 255, 153));
         btnBack.setText("< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
