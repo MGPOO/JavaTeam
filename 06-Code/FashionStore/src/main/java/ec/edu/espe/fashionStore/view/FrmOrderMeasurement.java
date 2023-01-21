@@ -655,15 +655,15 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu mnuFashionStore;
-    private javax.swing.JTextField txtArm;
-    private javax.swing.JTextField txtChest;
-    private javax.swing.JTextField txtHip;
-    private javax.swing.JTextField txtLeg;
-    private javax.swing.JTextField txtNeck;
-    private javax.swing.JTextField txtOrderID;
-    private javax.swing.JTextField txtOrderType;
+    public javax.swing.JTextField txtArm;
+    public javax.swing.JTextField txtChest;
+    public javax.swing.JTextField txtHip;
+    public javax.swing.JTextField txtLeg;
+    public javax.swing.JTextField txtNeck;
+    public javax.swing.JTextField txtOrderID;
+    public javax.swing.JTextField txtOrderType;
     private javax.swing.JTextField txtProductionCost;
-    private javax.swing.JTextField txtShoulder;
-    private javax.swing.JTextField txtWaist;
+    public javax.swing.JTextField txtShoulder;
+    public javax.swing.JTextField txtWaist;
     // End of variables declaration//GEN-END:variables
 }
