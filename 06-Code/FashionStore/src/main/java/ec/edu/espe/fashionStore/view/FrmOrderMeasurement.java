@@ -9,6 +9,7 @@ import ec.edu.espe.fashionstore.model.Order;
 import ec.edu.espe.fashionStore.controller.Controller;
 import ec.edu.espe.fashionStore.controller.ControllerMeasurement;
 import ec.edu.espe.fashionStore.view.FrmAbout;
+import ec.edu.espe.fashionStore.view.FrmReportIssue;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import org.bson.BsonDocument;
@@ -71,10 +72,10 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         btnExitMeasurement = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuFashionStore = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itmAbout = new javax.swing.JMenuItem();
+        itmExit = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        itmReportIssues = new javax.swing.JMenuItem();
 
         jLabel10.setText("jLabel10");
 
@@ -346,28 +347,33 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
 
         mnuFashionStore.setText("Fashion Store");
 
-        jMenuItem1.setText("About");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itmAbout.setText("About");
+        itmAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itmAboutActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem1);
+        mnuFashionStore.add(itmAbout);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itmExit.setText("Exit");
+        itmExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itmExitActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem2);
+        mnuFashionStore.add(itmExit);
 
         jMenuBar1.add(mnuFashionStore);
 
         jMenu6.setText("Help");
 
-        jMenuItem3.setText("Report Issues");
-        jMenu6.add(jMenuItem3);
+        itmReportIssues.setText("Report Issues");
+        itmReportIssues.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmReportIssuesActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itmReportIssues);
 
         jMenuBar1.add(jMenu6);
 
@@ -501,16 +507,6 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnExitMeasurementActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FrmAbout about = new FrmAbout();
-        about.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void txtProductionCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductionCostActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProductionCostActionPerformed
@@ -593,6 +589,21 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNeckActionPerformed
 
+    private void itmAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAboutActionPerformed
+        FrmAbout about = new FrmAbout();
+        about.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_itmAboutActionPerformed
+
+    private void itmExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_itmExitActionPerformed
+
+    private void itmReportIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmReportIssuesActionPerformed
+        FrmReportIssue report = new FrmReportIssue();
+        report.setVisible(true);
+    }//GEN-LAST:event_itmReportIssuesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -633,6 +644,9 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     public javax.swing.JButton btnDelete;
     private javax.swing.JButton btnExitMeasurement;
     private javax.swing.JButton btnSave;
+    private javax.swing.JMenuItem itmAbout;
+    private javax.swing.JMenuItem itmExit;
+    private javax.swing.JMenuItem itmReportIssues;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -649,9 +663,6 @@ public class FrmOrderMeasurement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu mnuFashionStore;

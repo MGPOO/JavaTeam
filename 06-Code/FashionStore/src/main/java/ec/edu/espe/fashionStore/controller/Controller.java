@@ -2,17 +2,12 @@ package ec.edu.espe.fashionStore.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mongodb.MongoException;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import ec.edu.espe.fashionstore.model.Measurement;
 import ec.edu.espe.fashionstore.model.Order;
-import static java.util.Locale.filter;
 import java.util.Scanner;
 import org.bson.Document;
 import org.bson.conversions.Bson;
