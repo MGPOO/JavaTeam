@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import org.bson.BsonDocument;
 import org.bson.BsonInt64;
 import org.bson.conversions.Bson;
-
 /**
  *
  * @author Luis Orozco, Pythons, DCCO-ESPE
