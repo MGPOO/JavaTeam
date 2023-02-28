@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.edu.espe.fashionStore.view;
 
 import com.mongodb.MongoException;
@@ -17,7 +13,6 @@ import javax.swing.JOptionPane;
 import org.bson.BsonDocument;
 import org.bson.BsonInt64;
 import org.bson.conversions.Bson;
-
 /**
  *
  * @author Luis Orozco, Pythons, DCCO-ESPE
