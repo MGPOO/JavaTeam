@@ -1,24 +1,12 @@
+
 package ec.edu.espe.fashionStore.view;
 
-import javax.swing.JOptionPane;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import ec.edu.espe.fashionstore.model.ClothCatalogue;
 import ec.edu.espe.fashionStore.controller.ControllerClothCatalogue;
-import java.awt.event.KeyEvent;
-import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
-import jdk.jfr.Event;
-import org.bson.BsonDocument;
-import org.bson.BsonInt64;
-import org.bson.Document;
-import org.bson.conversions.Bson;
 
 /**
  *
@@ -58,12 +46,12 @@ public class FrmAddClothModel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         btnSaveChanges = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        mnuFashionStore = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuBar5 = new javax.swing.JMenuBar();
+        mnuFashionStore4 = new javax.swing.JMenu();
+        itmAbout4 = new javax.swing.JMenuItem();
+        itmExit = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        itmReportIssues = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fashion Store - Add Cloth Model");
@@ -193,34 +181,39 @@ public class FrmAddClothModel extends javax.swing.JFrame {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        mnuFashionStore.setText("Fashion Store");
+        mnuFashionStore4.setText("Fashion Store");
 
-        jMenuItem1.setText("About");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itmAbout4.setText("About");
+        itmAbout4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itmAbout4ActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem1);
+        mnuFashionStore4.add(itmAbout4);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itmExit.setText("Exit");
+        itmExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itmExitActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem2);
+        mnuFashionStore4.add(itmExit);
 
-        jMenuBar1.add(mnuFashionStore);
+        jMenuBar5.add(mnuFashionStore4);
 
         jMenu6.setText("Help");
 
-        jMenuItem3.setText("Report Issues");
-        jMenu6.add(jMenuItem3);
+        itmReportIssues.setText("Report Issues");
+        itmReportIssues.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmReportIssuesActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itmReportIssues);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar5.add(jMenu6);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -325,15 +318,20 @@ public class FrmAddClothModel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtIdKeyTyped
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itmAbout4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAbout4ActionPerformed
         FrmAbout about = new FrmAbout();
         about.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itmAbout4ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itmExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExitActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itmExitActionPerformed
+
+    private void itmReportIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmReportIssuesActionPerformed
+        FrmReportIssue report = new FrmReportIssue();
+        report.setVisible(true);
+    }//GEN-LAST:event_itmReportIssuesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,6 +372,13 @@ public class FrmAddClothModel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSaveChanges;
+    private javax.swing.JMenuItem itmAbout;
+    private javax.swing.JMenuItem itmAbout1;
+    private javax.swing.JMenuItem itmAbout2;
+    private javax.swing.JMenuItem itmAbout3;
+    private javax.swing.JMenuItem itmAbout4;
+    private javax.swing.JMenuItem itmExit;
+    private javax.swing.JMenuItem itmReportIssues;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -381,11 +386,16 @@ public class FrmAddClothModel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuBar jMenuBar4;
+    private javax.swing.JMenuBar jMenuBar5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu mnuFashionStore;
+    private javax.swing.JMenu mnuFashionStore1;
+    private javax.swing.JMenu mnuFashionStore2;
+    private javax.swing.JMenu mnuFashionStore3;
+    private javax.swing.JMenu mnuFashionStore4;
     private javax.swing.JPanel pnlinput;
     private javax.swing.JTextField txtColor;
     private javax.swing.JTextField txtId;

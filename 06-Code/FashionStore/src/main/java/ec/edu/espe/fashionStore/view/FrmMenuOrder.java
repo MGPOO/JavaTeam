@@ -26,10 +26,10 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuFashionStore = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itmAbout = new javax.swing.JMenuItem();
+        itmExit = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        itmReportIssues = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fashion Store - Menu Order");
@@ -64,28 +64,33 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
         mnuFashionStore.setText("Fashion Store");
 
-        jMenuItem1.setText("About");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itmAbout.setText("About");
+        itmAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itmAboutActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem1);
+        mnuFashionStore.add(itmAbout);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itmExit.setText("Exit");
+        itmExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itmExitActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem2);
+        mnuFashionStore.add(itmExit);
 
         jMenuBar1.add(mnuFashionStore);
 
         jMenu6.setText("Help");
 
-        jMenuItem3.setText("Report Issues");
-        jMenu6.add(jMenuItem3);
+        itmReportIssues.setText("Report Issues");
+        itmReportIssues.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmReportIssuesActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itmReportIssues);
 
         jMenuBar1.add(jMenu6);
 
@@ -150,15 +155,20 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itmAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAboutActionPerformed
         FrmAbout about = new FrmAbout();
         about.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itmAboutActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itmExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExitActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itmExitActionPerformed
+
+    private void itmReportIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmReportIssuesActionPerformed
+        FrmReportIssue report = new FrmReportIssue();
+        report.setVisible(true);
+    }//GEN-LAST:event_itmReportIssuesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,14 +209,14 @@ public class FrmMenuOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnFind;
+    private javax.swing.JMenuItem itmAbout;
+    private javax.swing.JMenuItem itmExit;
+    private javax.swing.JMenuItem itmReportIssues;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu mnuFashionStore;
     // End of variables declaration//GEN-END:variables
 }

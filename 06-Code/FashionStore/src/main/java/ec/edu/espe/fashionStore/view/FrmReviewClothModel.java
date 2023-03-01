@@ -8,10 +8,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
-import ec.edu.espe.fashionStore.controller.Controller;
 import ec.edu.espe.fashionstore.model.ClothCatalogue;
-import ec.edu.espe.fashionstore.model.Order;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +24,7 @@ import org.bson.conversions.Bson;
 public class FrmReviewClothModel extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
+
     /**
      * Creates new form ReviewClothModel
      */
@@ -34,6 +32,7 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
         initComponents();
         mostTable();
     }
+
     private void mostTable() {
 
         model.addColumn("Id");
@@ -61,10 +60,10 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuFashionStore = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itmAbout = new javax.swing.JMenuItem();
+        itmExit = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        itmReportIssues = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fashion Store - Review Cloth Model");
@@ -151,28 +150,33 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
 
         mnuFashionStore.setText("Fashion Store");
 
-        jMenuItem1.setText("About");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itmAbout.setText("About");
+        itmAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itmAboutActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem1);
+        mnuFashionStore.add(itmAbout);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itmExit.setText("Exit");
+        itmExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itmExitActionPerformed(evt);
             }
         });
-        mnuFashionStore.add(jMenuItem2);
+        mnuFashionStore.add(itmExit);
 
         jMenuBar1.add(mnuFashionStore);
 
         jMenu6.setText("Help");
 
-        jMenuItem3.setText("Report Issues");
-        jMenu6.add(jMenuItem3);
+        itmReportIssues.setText("Report Issues");
+        itmReportIssues.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmReportIssuesActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itmReportIssues);
 
         jMenuBar1.add(jMenu6);
 
@@ -213,12 +217,11 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
         ArrayList<String> clothModels = new ArrayList<>();
         Gson gson = new Gson();
         String[] clothModelRow = new String[4];
-                
+
         String document = "";
-        
+
         model.getDataVector().removeAllElements();
-       
-       
+
         String uri = "mongodb+srv://17POO:password555@fashionstore.nh5mcou.mongodb.net/test";
 
         try ( MongoClient mongoClient = MongoClients.create(uri)) {
@@ -238,20 +241,19 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
                 document = query.toJson();
                 TypeToken<ClothCatalogue> type = new TypeToken<ClothCatalogue>() {
                 };
-                while(cursor.hasNext()){
+                while (cursor.hasNext()) {
                     clothModels.add(cursor.next().toJson());
-                    
+
                 }
-                for (int i = 0; i<clothModels.size(); i++){
+                for (int i = 0; i < clothModels.size(); i++) {
                     ClothCatalogue clothModelData = gson.fromJson(clothModels.get(i), type.getType());
                     clothModelRow[0] = String.valueOf(clothModelData.getId());
                     clothModelRow[1] = String.valueOf(clothModelData.getName());
                     clothModelRow[2] = String.valueOf(clothModelData.getType());
                     clothModelRow[3] = String.valueOf(clothModelData.getColor());
-                    
+
                     model.addRow(clothModelRow);
-                    
-                    
+
                 }
 
             } catch (MongoException me) {
@@ -262,15 +264,20 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnFindActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itmAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAboutActionPerformed
         FrmAbout about = new FrmAbout();
         about.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itmAboutActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itmExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExitActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itmExitActionPerformed
+
+    private void itmReportIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmReportIssuesActionPerformed
+        FrmReportIssue report = new FrmReportIssue();
+        report.setVisible(true);
+    }//GEN-LAST:event_itmReportIssuesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,12 +318,12 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFind;
+    private javax.swing.JMenuItem itmAbout;
+    private javax.swing.JMenuItem itmExit;
+    private javax.swing.JMenuItem itmReportIssues;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

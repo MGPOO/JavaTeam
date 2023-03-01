@@ -87,7 +87,9 @@ public class FrmAbout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        
+        this.dispose();
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

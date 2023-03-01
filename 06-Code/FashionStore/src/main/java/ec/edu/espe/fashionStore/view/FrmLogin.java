@@ -1,6 +1,5 @@
 package ec.edu.espe.fashionStore.view;
 
-import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
