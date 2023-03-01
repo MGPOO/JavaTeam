@@ -58,7 +58,6 @@ public class FrmEditClothModel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fashion Store - Edit Cloth Model");
 
-        jLabel1.setFont(new java.awt.Font("Trajan Pro 3", 0, 12)); // NOI18N
         jLabel1.setText("EDIT CLOTH MODEL");
 
         jLabel2.setText("Search Id:");
@@ -126,14 +125,14 @@ public class FrmEditClothModel extends javax.swing.JFrame {
                                 .addComponent(txtEditName)
                                 .addComponent(txtEditType)
                                 .addComponent(txtEditColor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         pnlinputLayout.setVerticalGroup(
             pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlinputLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(pnlinputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(btnFind)

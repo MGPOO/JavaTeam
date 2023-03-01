@@ -99,7 +99,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Trajan Pro 3", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setText("Find Order");
 
         btnFind.setText("Find");
@@ -135,7 +135,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Trajan Pro 3", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Order Information");
 
         btnDeleteOrder.setBackground(new java.awt.Color(255, 0, 0));
@@ -233,19 +233,17 @@ public class FrmFindOrder extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addGap(289, 289, 289)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(211, 211, 211))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFind)
@@ -261,7 +259,7 @@ public class FrmFindOrder extends javax.swing.JFrame {
                     .addComponent(btnback)
                     .addComponent(btnUpdateOrder)
                     .addComponent(btnDeleteOrder))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
