@@ -1,22 +1,28 @@
 package ec.edu.espe.fashionstore.model;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Jonathan Jaguaco, Pythons, DCCO-ESPE
  */
 public class FashionDesigner {
 
-	public static void main(String [] args){
-        
-        Scanner sc = new Scanner(System.in);
-             
-        System.out.println("--FASHION DESIGNER--"); 
-        System.out.println("Create the order");
-        
+    //USE OF SINGLETON PATTERN
+    private static FashionDesigner instance;
+    private String password;
 
+    private FashionDesigner() {
+        this.password = "store123";
+    }
 
-        }  
-    
+    public static FashionDesigner getInstance() {
+        if (instance == null) {
+            instance = new FashionDesigner();
+        }
+        return instance;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
 }

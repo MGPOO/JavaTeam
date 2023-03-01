@@ -68,7 +68,6 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fashion Store - Review Cloth Model");
 
-        jLabel1.setFont(new java.awt.Font("Trajan Pro 3", 0, 12)); // NOI18N
         jLabel1.setText("REVIEW CLOTH MODEL");
 
         tblClothModels.setModel(new javax.swing.table.DefaultTableModel(
@@ -117,12 +116,12 @@ public class FrmReviewClothModel extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(19, 19, 19)
                 .addComponent(btnFind)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         btnBack.setText("< Back");

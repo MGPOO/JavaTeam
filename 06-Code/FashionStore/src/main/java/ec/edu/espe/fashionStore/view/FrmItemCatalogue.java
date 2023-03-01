@@ -41,7 +41,7 @@ public class FrmItemCatalogue extends javax.swing.JFrame {
 
         pnlButtons.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Trajan Pro 3", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 14)); // NOI18N
         jLabel1.setText("Item Catalogue");
 
         btnAddItem.setText("Add Item");
