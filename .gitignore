@@ -19,3 +19,4 @@
 *.tar.gz
 *.rar
 /06-Code/FashionStore/target/
+/06-Code/FashionStore/nbproject/

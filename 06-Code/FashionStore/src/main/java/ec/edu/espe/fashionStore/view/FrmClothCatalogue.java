@@ -38,7 +38,7 @@ public class FrmClothCatalogue extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fashion Store - Cloth Catalogue");
 
-        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Trajan Pro 3", 0, 14)); // NOI18N
         jLabel1.setText(" Cloth Catalogue");
 
         btnAddClothModel.setText("Add Cloth Model");
@@ -86,12 +86,13 @@ public class FrmClothCatalogue extends javax.swing.JFrame {
                                 .addComponent(btnAddClothModel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnEditClothModel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnlButtonsLayout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(btnReviewClothModel))
-                    .addGroup(pnlButtonsLayout.createSequentialGroup()
                         .addGap(140, 140, 140)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnReviewClothModel)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlButtonsLayout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)))))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         pnlButtonsLayout.setVerticalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
